@@ -1,5 +1,7 @@
-from django.shortcuts import render
+from django.shortcuts import render, redirect
 from .models import Inventory
+from .form import *
+from django.contrib import messages
 
 # Create your views here.
 
@@ -33,3 +35,17 @@ def list_item(request):
     }
         
     return render(request, "InventoryList.html", context)
+
+
+def insert_product(request):
+    form = InventoryCreateForm(request.POST or None)
+    if form.is_valid(): # checking the validation of form data
+        form.save() # save data in database
+        messages.success(request, 'Successfully inserted the product')
+        # this allow you the page to be redirected to another after saving data
+        return redirect('/medicines')
+    context = {
+        "form": form,
+        "title": "Insert Product",
+    }
+    return render(request, "InsertProduct.html", context)
