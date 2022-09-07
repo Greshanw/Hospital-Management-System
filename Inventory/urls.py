@@ -8,6 +8,7 @@ from django.urls import include
 urlpatterns = [
     # Add a path/ url for the home page , and the respective view.
     path('home/', views.home, name='homeInventory'),
+    path('medicines/', views.list_item, name='medicineList'),
     
     
 ]
