@@ -1,3 +1,7 @@
+<!-- load all static files -->
+{% load static %}
+<!-- renders the crispy form -->
+{% load crispy_forms_tags %}
 <!DOCTYPE html>
 <html>
 <head>
@@ -5,7 +9,7 @@
 </head>
 <body>
 	<form method='POST' action=''>{% csrf_token %}
-		{{form}}
+		{{form|crispy}}
         <input type="submit" value='Save'/>
     </form>
 
