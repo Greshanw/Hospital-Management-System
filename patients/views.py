@@ -1,9 +1,10 @@
+from django.http import HttpResponseRedirect, FileResponse
+import csv
+import qrcode
 from multiprocessing import context
-from re import search
 import secrets
-from this import d
-from unicodedata import name
 from django.shortcuts import render, redirect
+from django.http.response import StreamingHttpResponse, HttpResponse
 
 from patients.models import Patient
 from django.db.models import Q
@@ -41,3 +42,27 @@ def patients(request):
     return render(request, 'patients.html', {
         'patients': patients
     })
+
+def patient_report(request):
+    patients = Patient.objects.all()
+
+    response = HttpResponse(
+        content_type='text/csv',
+        headers={'Content-Disposition': 'attachment; filename="patient_report.csv"'},
+    )
+
+    writer = csv.writer(response)
+    writer.writerow(['#', 'PATIENT NAME', 'Date of Birth', 'NIC', 'Phone', 'E-MAIL', 'Address'])
+    for patient in patients:
+        writer.writerow([patient.id, patient.name, patient.dob, patient.NIC, patient.phone, patient.email, patient.address])
+
+    return response
+
+def generate_qr(request, qr):
+    name = 'myqr.png'
+    img = qrcode.make(qr)
+    img.save(name)
+    download_image = open('./myqr.png', 'rb')
+    
+    response = FileResponse(download_image, as_attachment=True)
+    return response
