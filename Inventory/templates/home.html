@@ -1,14 +1,229 @@
+<!-- load all static files -->
+
+{% load static %}
 
 <!DOCTYPE html>
-<html lang="en">
+
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Inventory</title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta name="description" content="">
+    <meta name="author" content="Mark Otto, Jacob Thornton, and Bootstrap contributors">
+    <meta name="generator" content="Jekyll v3.8.6">
+    <title>HOME</title>
+
+    <link rel="canonical" href="https://getbootstrap.com/docs/4.4/examples/navbar-fixed/">
+
+    <!-- Bootstrap core CSS -->
+    <link href="{% static 'css/stylesheets.css' %}" rel="stylesheet">
+    <link href="{% static 'css/bootstrap.min.css' %}" rel="stylesheet">
+    <link href="{% static 'css/navbar-top-fixed.css' %}" rel="stylesheet">
+
+    <script src="https://cdn.jsdelivr.net/npm/chart.js@3.5.0/dist/chart.min.js"></script>
+    <script>
+        function startTime() {
+            const today = new Date();
+            let h = today.getHours();
+            let m = today.getMinutes();
+            let s = today.getSeconds();
+            m = checkTime(m);
+            s = checkTime(s);
+            document.getElementById('txt').innerHTML = h + ":" + m + ":" + s;
+            setTimeout(startTime, 1000);
+        }
+
+        function checkTime(i) {
+            if (i < 10) { i = "0" + i };  // add zero in front of numbers < 10
+            return i;
+        }
+    </script>
+
+
+    <style>
+        .bd-placeholder-img {
+            font-size: 1.125rem;
+            text-anchor: middle;
+            -webkit-user-select: none;
+            -moz-user-select: none;
+            -ms-user-select: none;
+            user-select: none;
+        }
+
+        @media (min-width: 768px) {
+            .bd-placeholder-img-lg {
+                font-size: 3.5rem;
+            }
+        }
+
+        @font-face {
+            font-family: 'DIGITAL';
+            src: url('https://cssdeck.com/uploads/resources/fonts/digii/DS-DIGII.TTF');
+        }
+
+
+
+        #txt {
+
+            width: 200px;
+            height: 60px;
+            color: #ffffff;
+            border: 2px solid #999;
+            border-radius: 4px;
+            text-align: center;
+            font: 50px/60px 'DIGITAL', Helvetica;
+            background: linear-gradient(90deg, #000, #555);
+
+
+        }
+
+        .black-lives-matter {
+            font-size: 60px;
+
+            margin: 0;
+            font-family: 'Red Hat Display', sans-serif;
+            font-weight: 900;
+            background: url(https://image.freepik.com/free-photo/green-fabric-texture-background-abstract-closeup-texture-cloth_41969-3853.jpg);
+            background-size: 40%;
+            background-position: 50% 50%;
+            -webkit-background-clip: text;
+            color: rgba(0, 0, 0, 0.08);
+            animation: zoomout 10s ease 500ms forwards;
+        }
+
+        @keyframes zoomout {
+            from {
+                background-size: 40%;
+            }
+
+            to {
+                background-size: 10%;
+            }
+        }
+    </style>
+    <!-- Custom styles for this template -->
+    <link href="navbar-top-fixed.css" rel="stylesheet">
+
 </head>
-<body>
-        {% include 'navbar.html' %} 
-        <p> {{title}}</p>
+
+<body >
+    <!--include the navbar content here -->
+    {% include 'navbar.html' %}
+
+	<h1 class="display-3 text-center">{{title}}</h1>
     
+        
+        {% block content %}
+        
+        <div class="hstack gap-3">
+            <div class=" col-md-6 my-4" >
+
+                <canvas id="myChart" ></canvas>
+                <script>
+                    var ctx = document.getElementById('myChart').getContext('2d');
+                    var myChart = new Chart(ctx, {
+                        type: 'bar',
+                        data: {
+                            labels: [{% for instance in queryset %}  '{{instance.Medicine_name}}',   {% endfor %}],
+                    datasets: [{
+                        label: '#Products and their quantities available in the stock',
+                        data: [{% for instance in queryset %}  '{{instance.quantity}}', {% endfor %}],
+                        backgroundColor: [
+                            'rgba(255, 99, 132, 2)',
+                            'rgba(54, 162, 235, 2)',
+                            'rgba(255, 206, 86, 2)',
+                            'rgba(255,192,203, 2)',
+                            'rgba(75, 192, 192, 2)',
+                            'rgba(153, 102, 255, 2)',
+                            'rgba(255, 159, 64, 2)'
+                        ],
+                            borderColor: [
+                                'rgba(255, 99, 132, 1)',
+                                'rgba(54, 162, 235, 1)',
+                                'rgba(255, 206, 86, 1)',
+                                'rgba(75, 192, 192, 1)',
+                                'rgba(153, 102, 255, 1)',
+                                'rgba(255, 159, 64, 1)',
+                                'rgba(255,192,203, 1)',
+                            ],
+                                borderWidth: 1
+                            }]
+                        },
+                    options: {
+                        scales: {
+                            y: {
+                                beginAtZero: true
+                            }
+                        }
+                    }
+                    });
+
+                </script>
+
+
+
+            </div>
+
+            <div></div>
+            <div class="col-md-6 my-4" >
+
+                <div class="card-body">
+                    <canvas id="myChart1" ></canvas>
+                    <script>
+                        var ctx = document.getElementById('myChart1').getContext('2d');
+                        var myChart1 = new Chart(ctx, {
+
+                            type: 'pie',
+                            data: {
+                                labels: [{% for instance in queryset %}  '{{instance.Medicine_name}}',   {% endfor %}],
+                        datasets: [{
+                            label: 'Number of Products',
+                            data: [{% for instance in queryset %}  '{{instance.quantity}}', {% endfor %}],
+                            backgroundColor: [
+                                'rgba(255, 99, 132, 1)',
+                                'rgba(54, 162, 235, 1)',
+                                'rgba(255, 206, 86, 1)',
+                                'rgba(255,192,203, 1)',
+                                'rgba(75, 192, 192, 1)',
+                                'rgba(153, 102, 255, 1)',
+                                'rgba(255, 159, 64, 1)'
+                            ],
+                                borderColor: [
+                                    'rgba(255, 99, 132, 1)',
+                                    'rgba(54, 162, 235, 1)',
+                                    'rgba(255, 206, 86, 1)',
+                                    'rgba(75, 192, 192, 1)',
+                                    'rgba(153, 102, 255, 1)',
+                                    'rgba(255,192,203, 1)',
+                                    'rgba(255, 159, 64, 1)'
+                                ],
+                                    borderWidth: 1
+                            }]
+                                },
+                        options: {
+                            scales: {
+                                yAxes: [{
+                                    ticks: {
+                                        beginAtZero: true
+                                    }
+                                }]
+                            }
+                        }
+                            });
+                    </script>
+                </div>
+            </div>
+        </div>
+        {% endblock %}
+    
+    <script src="https://code.jquery.com/jquery-3.4.1.slim.min.js"
+        integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n"
+        crossorigin="anonymous"></script>
+    <script>window.jQuery || document.write('<script src="/docs/4.4/assets/js/vendor/jquery.slim.min.js"><\/script>')</script>
+    <script src="/docs/4.4/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-6khuMg9gaYr5AxOqhkVIODVIvm9ynTT5J4V1cfthmT+emCG6yVmEZsRHdxlotUnm"
+        crossorigin="anonymous"></script>
+
+
 </body>
+
 </html>
