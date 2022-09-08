@@ -1,9 +1,12 @@
 from multiprocessing import context
+from re import search
 import secrets
 from this import d
+from unicodedata import name
 from django.shortcuts import render, redirect
 
 from patients.models import Patient
+from django.db.models import Q
 
 # Create your views here.
 def add_patient(request):
@@ -25,6 +28,15 @@ def add_patient(request):
 
 def patients(request):
     patients = Patient.objects.all()
+
+    if request.method == 'GET':
+        search = request.GET.get('search')
+        if(search):
+            patients = Patient.objects.filter(
+                Q(name__contains = search) | 
+                Q(NIC__contains = search) | 
+                Q(phone__contains = search)
+            )
 
     return render(request, 'patients.html', {
         'patients': patients
