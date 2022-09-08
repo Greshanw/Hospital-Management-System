@@ -9,6 +9,6 @@ urlpatterns = [
     # Add a path/ url for the home page , and the respective view.
     path('home/', views.home, name='homeInventory'),
     path('medicines/', views.list_item, name='medicineList'),
-    path('insert_medicine/', views.insert_product, name="insertMedicine")
-    
+    path('insert_medicine/', views.insert_product, name="insertMedicine"),
+    path('generate_report/', views.generate_Report, name="generate_report")
 ]

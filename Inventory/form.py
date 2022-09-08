@@ -23,17 +23,17 @@ class InventoryCreateForm(forms.ModelForm):
                  ' Quantity should be greater than 0')
         return Product_ID
 
-    def clean_item_name(self):
-        item_name = self.cleaned_data.get('item_name')
-        if not item_name:
+    def clean_Medicine_name(self):
+        Medicine_name = self.cleaned_data.get('Medicine_name')
+        if not Medicine_name:
             raise forms.ValidationError('This field is required')
 
         for instance in Inventory.objects.all():
-            if instance.item_name == item_name:
+            if instance.Medicine_name == Medicine_name:
                 raise forms.ValidationError(
-                    item_name + ' is already created')
+                    Medicine_name + ' is already created')
 
-        return item_name
+        return Medicine_name
 
     def clean_quantity(self):
         quantity = self.cleaned_data.get('quantity')
@@ -46,3 +46,13 @@ class InventoryCreateForm(forms.ModelForm):
                  ' Quantity should be greater than 0')
 
         return quantity
+
+
+# Create a search form
+class InventorySearchForm(forms.ModelForm):
+    # export_to_CSV = forms.BooleanField(required=False)
+
+    class Meta:
+        model = Inventory
+        #search fields 
+        fields = ['Medicine_name']
