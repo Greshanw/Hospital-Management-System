@@ -37,7 +37,13 @@
             <div class="col-xl-12">
                 <div class="card">
                     <div class="card-body">
-                        <h4 class="box-title">Patient List</h4>
+                        <div class="row d-flex justify-content-between">
+                            <h4 class="box-title">Patient List</h4>
+                            <button style="background-color: #8bc34a; border: none;"><a href="#" style="color: black;">CSV</a></button>
+                            <form action="{% url 'patients' %}" method="get">
+                                <input name="search" class="form-control" type="text" placeholder="Search">
+                            </form>
+                        </div>
                     </div>
                     <div class="card-body--">
                         <div class="table-stats order-table ov-h">
@@ -50,40 +56,28 @@
                                         <th>NIC</th>
                                         <th>Phone</th>
                                         <th></th>
-                                        <th></th>
-                                        <th></th>
                                         
                                     </tr>
                                 </thead>
-                                <tbody>
+                                    {% if patients %}
+                                    {% for p in patients %}
                                     <tr>
-                                        <td class="serial">1</td>
-                                        <td>Mr.Saman</td>
-                                        <td>46</td>
-                                        <td>3426546435v</td>
-                                        <td>0784790758</td>
-                                        <td>QR</td>
+                                        <td class="serial">{{ forloop.counter }}</td>
+                                        <td>{{ p.name }}</td>
+                                        <td>{{ p.age }}</td>
+                                        <td>{{ p.NIC }}</td>
+                                        <td>{{ p.phone }}</td>
                                         <td>
+                                            <a href="#">QR</a>
                                             <i class="fa fa-pencil mx-2"></i>
                                             <i class="fa fa-trash mx-2"></i>
                                         </td>
                                     </tr>
-                                </tbody>
-                                <!-- <tbody>
-                                    {% if orders %}
-                                    {% for order in orders %}
-                                    <tr>
-                                        <td class="serial">{{ forloop.counter }}</td>
-                                        <td>{{ order.supplier }}</td>
-                                        <td>{{ order.product }}</td>
-                                        <td>{{ order.quantity }}</td>
-                                        <td>{{ order.created_date }}</td>
-                                    </tr>
                                     {% endfor %}
                                     {% else %}
-                                        <tr><td>No Order Data</td></tr>
+                                        <tr><td>No patients Data</td></tr>
                                     {% endif %}
-                                </tbody> -->
+                                </tbody>
                             </table>
                         </div> <!-- /.table-stats -->
                     </div>
