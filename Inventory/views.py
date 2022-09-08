@@ -10,7 +10,7 @@ from django.contrib import messages
 
 def home(request):
     # title of the view
-    title = 'Welcome: DashBoard of the Inventory'
+    title = 'DashBoard of the Inventory'
     queryset = Inventory.objects.all()
 
     # inside the context stores the variables

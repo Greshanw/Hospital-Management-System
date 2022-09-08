@@ -8,6 +8,7 @@
     <link href="{% static 'css/stylesheets.css' %}" rel="stylesheet">
 </head>
 <body>
+    {% include 'navbar.html' %} 
 	{{title}}<br>
 	{% for instance in queryset %}
 	{{instance.Medicine_name}}, {{instance.quantity}}<br>
