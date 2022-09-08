@@ -51,7 +51,7 @@ def insert_product(request):
     form = InventoryCreateForm(request.POST or None)
     if form.is_valid(): # checking the validation of form data
         form.save() # save data in database
-        messages.success(request, 'Successfully inserted the product')
+        messages.success(request, 'Successfully inserted the Medical product')
         # this allow you the page to be redirected to another after saving data
         return redirect('/medicines')
     context = {
