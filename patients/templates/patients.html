@@ -87,7 +87,10 @@
                                                     <div class="modal-body">
                                                         Are you sure you want to delete the patient
                                                     </div>
-                                                    
+                                                    <div class="modal-footer">
+                                                        <a href="{% url 'delete-patient' id=p.id %}" type="button" class="btn btn-primary">Delete</a>
+                                                        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                                                      </div>
                                                   </div>
                                                 </div>
                                               </div>
