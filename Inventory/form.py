@@ -46,6 +46,32 @@ class InventoryCreateForm(forms.ModelForm):
                  ' Quantity should be greater than 0')
 
         return quantity
+    
+    def clean_receive_quantity(self):
+        receive_quantity = self.cleaned_data.get('receive_quantity')
+        if not receive_quantity:
+            raise forms.ValidationError('This field is required')
+
+        return receive_quantity
+    
+    def clean_reorder_level(self):
+        reorder_level = self.cleaned_data.get('reorder_level')
+        if not reorder_level:
+            raise forms.ValidationError('This field is required')
+
+        
+        if reorder_level <= 0:
+            raise forms.ValidationError(
+                 ' Reorder Level should be greater than 0')
+
+        return reorder_level
+
+    def clean_Vendor(self):
+        Vendor = self.cleaned_data.get('Vendor')
+        if not Vendor:
+            raise forms.ValidationError('This field is required')
+
+        return Vendor
 
 
 # Create a search form
