@@ -44,23 +44,27 @@ def add_appoinment(request):
 
 def appoinment(request):
     appoinments =Appoinment.objects.all()
+    appoinments_count = appoinments.count()
     
 
     return render(request, 'appoinment.html', {
-        'appoinments': appoinments
+        'appoinments': appoinments,'appoinments_count':appoinments_count
     })
 
 def dashboard(request):
     appoinments = Appoinment.objects.all()
+    appoinments_count = appoinments.count()
+
    
 
     return render(request, 'dashboard.html', {
-        'appoinments': appoinments
+        'appoinments': appoinments,'appoinments_count':appoinments_count
     })
 
 
 def patient_report(request):
     appoinments = Appoinment.objects.all()
+    
 
     response = HttpResponse(
         content_type='text/csv',
