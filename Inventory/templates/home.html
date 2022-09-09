@@ -1,7 +1,7 @@
 <!-- load all static files -->
-
+{% extends 'base/base.html' %}
 {% load static %}
-
+{% block content %}
 <!DOCTYPE html>
 
 <head>
@@ -63,7 +63,7 @@
 
 
         #txt {
-
+"myChart
             width: 200px;
             height: 60px;
             color: #ffffff;
@@ -107,14 +107,16 @@
 
 <body >
     <!--include the navbar content here -->
-    {% include 'navbar.html' %}
-
+    
+    
 	<h1 class="display-3 text-center">{{title}}</h1>
     
         
-        {% block content %}
         
-        <div class="hstack gap-3">
+        <div style="padding-left: 10px;">
+        <div class="card" style="width: 70rem;">
+        <div class="hstack gap-3 " style="margin: 10px;">
+            
             <div class=" col-md-6 my-4" >
 
                 <canvas id="myChart" ></canvas>
@@ -125,7 +127,7 @@
                         data: {
                             labels: [{% for instance in queryset %}  '{{instance.Medicine_name}}',   {% endfor %}],
                     datasets: [{
-                        label: '#Products and their quantities available in the stock',
+                        label: '#Products and their quantities available in the Inventory',
                         data: [{% for instance in queryset %}  '{{instance.quantity}}', {% endfor %}],
                         backgroundColor: [
                             'rgba(255, 99, 132, 2)',
@@ -164,6 +166,7 @@
             </div>
 
             <div></div>
+            
             <div class="col-md-6 my-4" >
 
                 <div class="card-body">
@@ -213,7 +216,9 @@
                 </div>
             </div>
         </div>
-        {% endblock %}
+        </div>
+    </div>
+        
     
     <script src="https://code.jquery.com/jquery-3.4.1.slim.min.js"
         integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n"
@@ -227,3 +232,4 @@
 </body>
 
 </html>
+{% endblock content %}

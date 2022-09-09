@@ -1,14 +1,16 @@
+{% extends 'base/base.html' %}
 <!-- load all static files -->
 {% load static %}
 <!-- renders the crispy form -->
 {% load crispy_forms_tags %}
+{% block content %}
 <!DOCTYPE html>
 <html>
 <head>
 	<title>{{title}}</title>
 </head>
 <body>
-    {% include 'navbar.html' %} 
+    
     <div  >
         
 
@@ -20,16 +22,16 @@
     <div class="row" >
     <div class="col-sm-5" style="font-weight: bolder ; text-align: left;">
                     <!--Start of col-->
-                    <div class="display_table" style=" border: 2px solid rgb(0, 211, 253); background-color: floralwhite;">
+                    <div class="display_table" style=" border: 2px solid rgb(0, 211, 253); background-color: floralwhite;width: 920px;">
                         
-                        <form style="margin: 10px;" method='POST' action=''>{% csrf_token %}
+                        <form style="margin: 10px; width: 900px;" method='POST' action=''>{% csrf_token %}
                             <!-- security code -->
 
                             <!-- Rendering the form -->
                             {{form|crispy}}
                             <center>
                             <Button class="btn btn-primary" s
-                                type="submit" style="width: 600px;"  > Insert </Button>
+                                type="submit" style="width: 400px;"  > Submit </Button>
                             </center>
 
                         </form>
@@ -42,3 +44,4 @@
 
 </body>
 </html>
+{% endblock content %}
