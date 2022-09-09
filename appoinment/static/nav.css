@@ -4,7 +4,7 @@
 footer {
   background: #0000FF;
   color: black;
-  margin-top:100px;
+  
 }
 
 footer a {
@@ -43,7 +43,7 @@ ul.social-network {
 
 ul.social-network li {
   display: inline;
-  margin: 0 5px;
+  margin: 0 1px;
 }
 
 
@@ -86,7 +86,7 @@ ul.social-network li {
 
 .social-circle li i {
   margin: 0;
-  line-height: 30px;
+  line-height: 3px;
   text-align: center;
 }
 

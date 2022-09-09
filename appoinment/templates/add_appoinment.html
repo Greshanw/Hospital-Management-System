@@ -1,4 +1,6 @@
-{% extends 'base/abase.html' %}
+
+{% extends 'abase/abase.html' %}
+
 
 {% block title %}Add New appoinment{% endblock title %}
 
@@ -17,9 +19,9 @@
                 <div class="page-header float-right">
                     <div class="page-title">
                         <ol class="breadcrumb text-right">
-                            <li><a href="#">Dashboard</a></li>
-                            <li><a href="#">appoinment</a></li>
-                            <li class="active">Add appoinment</li>
+                            <li><a href="{% url 'dashboard' %}">Dashboard</a></li>
+                            <li><a href="{% url 'appoinment' %}">Appoinment</a></li>
+                            <li class="active"><a href="{% url 'add_appoinment' %}">Add Appoinment</a></li>
                         </ol>
                     </div>
                 </div>
@@ -40,26 +42,27 @@
                 <!-- Credit Card -->
                 <div id="pay-invoice">
                     <div class="card-body">
-                        <form action="{% url 'add-doctor' %}" method="post">
+                        <form action="{% url 'add_appoinment' %}" method="post">
                             {% csrf_token %}
                             <div class="form-group">
                                 <label for="supplier" class="control-label mb-1">Doctor Name</label>
-                                <input class="form-control" type="text" name="name" placeholder="Enter Doctor Name" required>
+                                <input class="form-control" type="text" name="Doctor_Name" placeholder="Enter Doctor Name" required>
                             </div>
                            
                             <div class="form-group">
                                 <label for="product" class="control-label mb-1">Patient Name</label>
-                                <input class="form-control" type="text" name="Patient Name" placeholder="Enter Patient Name" required>
+                                <input class="form-control" type="text" name="Patient_Name" placeholder="Enter Patient Name" required>
                             </div>
                              <div class="form-group">
                                 <label for="product" class="control-label mb-1">Date</label>
-                                <input class="form-control" type="date" name="dob" placeholder="12 MAY 2022" required>
+                                <input class="form-control" type="date" name="Date" placeholder="DD/MM/YYYY" required>
                             </div>
                             <div class="form-group">
                                 <label for="product" class="control-label mb-1">Time</label>
-                                <input class="form-control" type="text" name="Time" placeholder="11.00PM" required>
+                                <input class="form-control" type="time" id="appt" name="Time" required>
+
                             </div>
-                            
+                           
                             <div>
                                 <button id="payment-button" type="submit" class="btn btn-lg btn-block" style="background-color:#3f51b5; color: #fff;">
                                     <span id="payment-button-amount">Submit</span>
@@ -76,3 +79,4 @@
     </div><!--/.col-->
 </div>
 {% endblock content %}
+{% include 'footer.html' %}

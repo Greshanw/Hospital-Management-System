@@ -1,5 +1,5 @@
-{% extends 'base/abase.html' %}
 
+{% extends 'abase/abase.html' %}
 {% block title %}View Appoinment{% endblock title %}
 
 {% block breadcrumbs %}
@@ -17,9 +17,9 @@
                 <div class="page-header float-right">
                     <div class="page-title">
                         <ol class="breadcrumb text-right">
-                            <li><a href="#">Dashboard</a></li>
-                            <li><a href="#">Appoinment</a></li>
-                            <li class="active">View Appoinment</li>
+                            <li><a href="{% url 'dashboard' %}">Dashboard</a></li>
+                            <li><a href="{% url 'appoinment' %}">Appoinment</a></li>
+                            <li class="active"><a href="{% url 'appoinment' %}">View Appoinment</a></li>
                         </ol>
                     </div>
                 </div>
@@ -39,10 +39,10 @@
                     <div class="card-body">
                         <div class="row d-flex justify-content-between">
                             <h4 class="box-title">Appoinment List</h4>
-                            <!-- <button style="background-color: #8bc34a; border: none;"><a href="#" style="color: black;">CSV</a></button>
+                            <button style="background-color: #8bc34a; border: none;"><a href="#" style="color: black;">CSV</a></button>
                             <form action="{% url 'appoinment' %}" method="get">
                                 <input name="search" class="form-control" type="text" placeholder="Search">
-                            </form> -->
+                            </form> 
                         </div>
                     </div>
                     <div class="card-body--">
@@ -59,12 +59,12 @@
                                         
                                     </tr>
                                 </thead>
-                                    {% if appoinment %}
-                                    {% for a in appoinment %}
+                                    {% if appoinments %}
+                                    {% for a in appoinments %}
                                     <tr>
                                         <td class="serial">{{ forloop.counter }}</td>
-                                          <td>{{ a.Docator_Name }}</td>
-                                        <td>{{ a.Patients_Name }}</td>
+                                          <td>{{ a.Doctor_Name }}</td>
+                                        <td>{{ a.Patient_Name }}</td>
                                         <td>{{ a.Date }}</td>
                                         <td>{{ a.Time }}</td>
                                         <td>
@@ -87,3 +87,4 @@
     </div>
     <!-- /.orders -->
 {% endblock content %}
+{% include 'footer.html' %}

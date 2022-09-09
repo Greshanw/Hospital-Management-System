@@ -2,8 +2,11 @@ from multiprocessing import context
 import secrets
 from this import d
 from django.shortcuts import render, redirect
+from django.http import HttpResponseRedirect, FileResponse
+import csv
+from django.http.response import StreamingHttpResponse, HttpResponse
 
-from appoinment.models import appoinment
+from appoinment.models import Appoinment
 
 
 # Create your views here.
@@ -30,25 +33,43 @@ def add_appoinment(request):
        Date = request.POST.get('Date')
        Time = request.POST.get('Time')
 
-       appoinment = appoinment(Doctor_Name=Doctor_Name,Patient_Name=Patient_Name ,Date=Date,Time=Time)
+       appoinment = Appoinment(Doctor_Name=Doctor_Name,Patient_Name=Patient_Name ,Date=Date,Time=Time)
        appoinment.save()
-    return redirect('appoinment')
+       return redirect('appoinment')
         
 
     return render(request, 'add_appoinment.html')
+  
+    
 
 def appoinment(request):
-    appoinment =appoinment.objects.all()
-    appoinment_count = appoinment.count()
+    appoinments =Appoinment.objects.all()
+    
 
     return render(request, 'appoinment.html', {
-        'appoinment': appoinment,'appoinment_count':appoinment_count
+        'appoinments': appoinments
     })
 
 def dashboard(request):
-    appoinment = appoinment.objects.all()
-    appoinment_count = appoinment.count()
+    appoinments = Appoinment.objects.all()
+   
 
     return render(request, 'dashboard.html', {
-        'appoinment': appoinment,'appoinment_count':appoinment_count
+        'appoinments': appoinments
     })
+
+
+def patient_report(request):
+    appoinments = Appoinment.objects.all()
+
+    response = HttpResponse(
+        content_type='text/csv',
+        headers={'Content-Disposition': 'attachment; filename="appoinment_report.csv"'},
+    )
+
+    writer = csv.writer(response)
+    writer.writerow(['Doctor Name', 'PATIENT NAME', 'Date', 'Time'])
+    for appoinment in appoinments:
+       writer.writerow([appoinment.Doctor_Name, appoinment.Patient_Name, appoinment.Date, appoinment.Time])
+
+    return response

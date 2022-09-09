@@ -1,5 +1,5 @@
-{% include 'base.html' %}
-{% include 'nav.html' %}
+{% include 'abase/navbar.html' %}
+{% include 'mainnav.html' %}
 
 <!DOCTYPE html>
  <html lang='en'>
@@ -30,9 +30,10 @@
 <body>
 
 {% block content %}
-  
-  &nbsp; &nbsp;&nbsp; &nbsp;&nbsp; &nbsp;&nbsp; &nbsp;&nbsp; &nbsp;&nbsp; &nbsp;&nbsp; &nbsp;&nbsp; &nbsp;&nbsp; &nbsp;&nbsp; &nbsp;
-    <h2>ADMIN LOGIN</h2>
+
+    <img src ="{%static 'images/lovepik-medical-background-of-doctors-image_500692338.jpg' %}" width="1535px" height="550px" >
+
+  <h2>ADMIN LOGIN</h2>
   <form action="/action_page.php" class="container">
     <h3>SIGN IN&nbsp; &nbsp;&nbsp; &nbsp;<i class="fas fa-user-circle"></i></h3>
 
@@ -40,7 +41,7 @@
     <input type="text" placeholder="Admin Name" name="email" required>
     <input type="password" placeholder="Enter Password" name="psw" required>
 
-    <button type="submit" class="btn">LOGIN &nbsp; &nbsp;<button type="submit" class="btn">SIGN UP</button></button>
+    <button type="submit" class="btn">LOGIN <button type="submit" class="btn">SIGN UP</button></button>
     
   </form>
 </div>
@@ -50,7 +51,7 @@
   </div>
 </nav>
 {% endblock content %}
-
+<br><br><br><br><br><br><br>
 {% include 'footer.html' %}
 </body>
 </html>

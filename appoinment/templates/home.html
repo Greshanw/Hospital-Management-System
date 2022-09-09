@@ -1,16 +1,9 @@
-{% include 'base.html' %}
-{% include 'nav.html' %}
+{% load static %}
 
+{% include 'abase/anavbar.html' %}
 
-{% block content %}
-    <img src ="homepage-hero-bg-short.jpg" width="1535px" height="440px" >
-  
-  
-    
-        
-    </div>
-  </div>
-</nav>
-{% endblock content %}
+{% include 'mainnav.html' %}
+
+    <img src ="{%static 'images/homepage-hero-bg-short.jpg' %}" width="1535px" height="550px" >
 
 {% include 'footer.html' %}

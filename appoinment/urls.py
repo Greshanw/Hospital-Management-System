@@ -9,9 +9,9 @@ urlpatterns = [
     path('contact/',Contact, name='contact'),
     path('about/',About, name='about'),
     path('loginsign/',Loginsign, name='loginsign'),
-     path('dashboard',dashboard,name='dashboard'),
-    path('add_appoinment', add_appoinment, name='add_appoinment'),
-    path('appoinment', appoinment, name='appoinment'),
+     path('dashboard/',dashboard,name='dashboard'),
+    path('add_appoinment/', add_appoinment, name='add_appoinment'),
+    path('appoinment/', appoinment, name='appoinment'),
     
    
     
