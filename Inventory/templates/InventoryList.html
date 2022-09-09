@@ -47,8 +47,8 @@
         </div>
         {% for message in messages %}
         <div class="toast-body text-center">
-          <li{% if message.tags %} class="{{ message.tags }}"{% endif %}><div class="alert alert-success" role="alert">{{ message }}</div></li>
-                         
+          <div class="alert alert-success" role="alert">{{ message }}</div>
+        
                    {% endfor %}
         </div>
       </div>

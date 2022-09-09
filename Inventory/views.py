@@ -12,7 +12,7 @@ import csv
 
 def home(request):
     # title of the view
-    title = 'DashBoard of the Inventory'
+    title = 'Dashboard of the Inventory'
     queryset = Inventory.objects.all()
 
     # inside the context stores the variables
