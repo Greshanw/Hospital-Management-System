@@ -1,0 +1,102 @@
+<!-- load all static files -->
+{% extends 'base/base.html' %}
+{% load static %}
+<!-- renders the crispy form -->
+{% load crispy_forms_tags %}
+{% block content %}
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Item List</title>
+
+    <link href="{% static 'css/stylesheets.css' %}" rel="stylesheet">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.1/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link href="https://getbootstrap.com/docs/5.2/assets/css/docs.css" rel="stylesheet">
+    <title>Bootstrap Example</title>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.1/dist/js/bootstrap.bundle.min.js"></script>
+  </head>
+<body>
+    
+    
+        <div class="hstack gap-3" style="padding-left: 200px; margin-bottom: 15px;">
+            <figure class="text-center" >
+                <blockquote class="blockquote">
+                  <p class="display-4" style="margin-top:7px">{{title}}</p>
+                  
+                </blockquote>
+                
+              </figure>
+              
+            <a class="btn btn-primary ms-auto" href="{%url 'generate_report'%}">CSV</a></button>
+            <div class="vr"></div>
+            <button type="button" class="btn btn-primary active" data-bs-toggle="button" aria-pressed="true">Scan Barcode</button>
+            <form method="post" action='' class="d-flex" style="padding-bottom: 14px ;"> {% csrf_token %}
+                {{form|crispy}}
+                <input class="btn btn-outline-success" type="submit" style="margin-left: 5px; height: 50px; width: auto; margin-top: 25px;">
+              </form> 
+            </div>
+        
+      {% if messages %}
+      <center>
+      <div class="toast fade show" style="width:400px;height:120px"role="alert" aria-live="assertive" aria-atomic="true">
+        <div class="toast-header">
+          
+          <strong class="me-auto">Inventory Notification</strong>
+          
+          <button type="button" class="btn-close" data-bs-dismiss="toast" aria-label="Close"></button>
+        </div>
+        {% for message in messages %}
+        <div class="toast-body text-center">
+          <div class="alert alert-success" role="alert">{{ message }}</div>
+        
+                   {% endfor %}
+        </div>
+      </div>
+    </center>
+      {% endif %}  
+    <table class="table table-hover table-bordered" >
+        <thead class="table-light">
+          <tr>
+            <th scope="col">Product_ID</th>
+            <th scope="col">Medicine_name</th>
+            <th scope="col">quantity</th>
+            <th scope="col">Net_price</th>
+            <th scope="col">receive_quantity</th>
+            <th scope="col">Vendor</th>
+            <th scope="col">reorder_level</th>
+            <th scope="col">initial_inserted</th>
+            <th scope="col">last_updated</th>
+            <th scope="col">Update</th>
+            <th scope="col">Delete</th>
+
+          </tr>
+        </thead>
+        <tbody>
+            {% for instance in queryset %}
+          <tr >
+            <th scope="row">{{instance.Product_ID}}</th>
+            <td >{{instance.Medicine_name}}</td>
+            {% if instance.quantity <= instance.reorder_level %} <td
+            class="table-warning">
+                {{instance.quantity}}
+          </td>
+{% else %} <td>{{instance.quantity}}
+{% endif %}</td>
+            <td>{{instance.Net_price}}</td>
+            <td>{{instance.receive_quantity}}</td>
+            <td>{{instance.Vendor}}</td>
+            <td>{{instance.reorder_level}}</td>
+            <td>{{instance.initial_inserted}}</td>
+            <td>{{instance.last_updated}}</td>
+            <td><a href="#"><img style="height: 30px; width: 30px;" src="{%static 'images/edit.gif' %}"></a>
+            <td><a href="#"><img style="height: 30px; width: 30px;" src="{%static 'images/delete.gif' %}"></a>
+          </tr>
+          {% endfor %}
+          
+        </tbody>
+      </table>
+	
+
+</body>
+</html>
+{% endblock content %}
