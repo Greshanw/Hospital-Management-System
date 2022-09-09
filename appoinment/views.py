@@ -25,30 +25,30 @@ def Login(request):
 
 def add_appoinment(request):
     if request.method == 'POST':
-        name = request.POST.get('name')
-        speciality = request.POST.get('speciality')
-        phone = request.POST.get('phone')
-        email = request.POST.get('email')
+       Doctor_Name = request.POST.get('Doctor_Name')
+       Patient_Name = request.POST.get('Patient_Name')
+       Date = request.POST.get('Date')
+       Time = request.POST.get('Time')
 
-        doctor = Doctor(name=name,phone=phone ,speciality=speciality,email=email)
-        doctor.save()
-        return redirect('doctors')
+       appoinment = appoinment(Doctor_Name=Doctor_Name,Patient_Name=Patient_Name ,Date=Date,Time=Time)
+       appoinment.save()
+    return redirect('appoinment')
         
 
-    return render(request, 'add_doctor.html')
+    return render(request, 'add_appoinment.html')
 
-def doctors(request):
-    doctors = Doctor.objects.all()
-    doctors_count = doctors.count()
+def appoinment(request):
+    appoinment =appoinment.objects.all()
+    appoinment_count = appoinment.count()
 
-    return render(request, 'doctors.html', {
-        'doctors': doctors,'doctors_count':doctors_count
+    return render(request, 'appoinment.html', {
+        'appoinment': appoinment,'appoinment_count':appoinment_count
     })
 
 def dashboard(request):
-    doctors = Doctor.objects.all()
-    doctors_count = doctors.count()
+    appoinment = appoinment.objects.all()
+    appoinment_count = appoinment.count()
 
     return render(request, 'dashboard.html', {
-        'doctors': doctors,'doctors_count':doctors_count
+        'appoinment': appoinment,'appoinment_count':appoinment_count
     })

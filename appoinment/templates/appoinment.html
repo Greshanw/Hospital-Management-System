@@ -1,6 +1,6 @@
-{% extends 'base/base.html' %}
+{% extends 'base/abase.html' %}
 
-{% block title %}View Doctors{% endblock title %}
+{% block title %}View Appoinment{% endblock title %}
 
 {% block breadcrumbs %}
 <div class="breadcrumbs">
@@ -18,8 +18,8 @@
                     <div class="page-title">
                         <ol class="breadcrumb text-right">
                             <li><a href="#">Dashboard</a></li>
-                            <li><a href="#">Doctors</a></li>
-                            <li class="active">View Doctor</li>
+                            <li><a href="#">Appoinment</a></li>
+                            <li class="active">View Appoinment</li>
                         </ol>
                     </div>
                 </div>
@@ -38,9 +38,9 @@
                 <div class="card">
                     <div class="card-body">
                         <div class="row d-flex justify-content-between">
-                            <h4 class="box-title">Doctor List</h4>
+                            <h4 class="box-title">Appoinment List</h4>
                             <!-- <button style="background-color: #8bc34a; border: none;"><a href="#" style="color: black;">CSV</a></button>
-                            <form action="{% url 'doctors' %}" method="get">
+                            <form action="{% url 'appoinment' %}" method="get">
                                 <input name="search" class="form-control" type="text" placeholder="Search">
                             </form> -->
                         </div>
@@ -50,23 +50,23 @@
                             <table class="table ">
                                 <thead>
                                     <tr>
-                                        <th class="serial">Doctor ID</th>
-                                        <th>Name</th>
-                                        <th>Speciality</th>
-                                        <th>Contact No</th>
-                                        <th>Email</th>
+                                        <th class="serial">Appoinment ID</th>
+                                        <th>Doctor Name</th>
+                                        <th>Patient Name</th>
+                                        <th>Date</th>
+                                        <th>Time</th>
                                         <th>Action</th>
                                         
                                     </tr>
                                 </thead>
-                                    {% if doctors %}
-                                    {% for p in doctors %}
+                                    {% if appoinment %}
+                                    {% for a in appoinment %}
                                     <tr>
                                         <td class="serial">{{ forloop.counter }}</td>
-                                        <td>{{ p.name }}</td>
-                                        <td>{{ p.speciality }}</td>
-                                        <td>{{ p.phone }}</td>
-                                        <td>{{ p.email }}</td>
+                                          <td>{{ a.Docator_Name }}</td>
+                                        <td>{{ a.Patients_Name }}</td>
+                                        <td>{{ a.Date }}</td>
+                                        <td>{{ a.Time }}</td>
                                         <td>
                                             <!-- <a href="#">QR</a> -->
                                             <i class="fa fa-pencil mx-2"></i>
@@ -75,7 +75,7 @@
                                     </tr>
                                     {% endfor %}
                                     {% else %}
-                                        <tr><td>No Doctor Data</td></tr>
+                                        <tr><td>No Appoinment Data</td></tr>
                                     {% endif %}
                                 </tbody>
                             </table>

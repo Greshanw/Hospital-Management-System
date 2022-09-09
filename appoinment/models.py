@@ -28,3 +28,13 @@ class Doctor(models.Model):
 
     def __str__(self):
         return self.name
+
+
+class appoinment(models.Model):
+    Doctor_Name = models.CharField(max_length=120, unique=True)
+    Patient_Name = models.CharField(max_length=120, unique=True)
+    Date = models.DateField()
+    Time = models.TimeField()
+
+    def __str__(self):
+            return self.Doctor_Name
