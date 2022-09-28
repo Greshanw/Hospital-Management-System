@@ -71,11 +71,11 @@
                                         <td>{{ p.phone }}</td>
                                         <td>
                                             <a href="{% url 'generate-qr' qr=p.qr%}">QR</a>
-                                            <i class="fa fa-pencil mx-2"></i>
-                                            <a type="button" data-toggle="modal" data-target="#exampleModal">
+                                            <a type="button" href="{% url 'edit-patient' id=p.id %}"><i class="fa fa-pencil mx-2"></i></a>
+                                            <a type="button" data-toggle="modal" data-target="#deleteModal{{p.id}}">
                                                 <i class="fa fa-trash mx-2"></i>
                                             </a>
-                                            <div class="modal fade" id="exampleModal" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                                            <div class="modal fade" id="deleteModal{{p.id}}" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
                                                 <div class="modal-dialog" role="document">
                                                   <div class="modal-content text-center">
                                                     <div class="modal-header">
