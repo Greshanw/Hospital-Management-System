@@ -66,3 +66,8 @@ def generate_qr(request, qr):
     
     response = FileResponse(download_image, as_attachment=True)
     return response
+
+def delete_patient(request, id):
+    Patient.objects.filter(id=id).delete()
+
+    return redirect('patients')
