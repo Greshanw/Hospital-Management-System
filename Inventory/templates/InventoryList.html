@@ -88,6 +88,7 @@
     <table class="table table-hover table-bordered" >
         <thead class="table-light">
           <tr>
+            <th scope="col">Barcode</th>
             <th scope="col">Product ID</th>
             <th scope="col">Medicine Name</th>
             <th scope="col">Quantity</th>
@@ -105,6 +106,7 @@
         <tbody>
             {% for instance in queryset %}
           <tr >
+            <th scope="row"><a href="../media/{{instance.BarCode}}">{{instance.BarCode}}</a></th>
             <th scope="row">{{instance.Product_ID}}</th>
             <td >{{instance.Medicine_name}}</td>
             {% if instance.quantity <= instance.reorder_level %} <td
