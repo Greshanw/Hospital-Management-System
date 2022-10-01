@@ -10,5 +10,8 @@ urlpatterns = [
     path('home/', views.home, name='homeInventory'),
     path('medicines/', views.list_item, name='medicineList'),
     path('insert_medicine/', views.insert_product, name="insertMedicine"),
-    path('generate_report/', views.generate_Report, name="generate_report")
+    path('generate_report/', views.generate_Report, name="generate_report"),
+    path('update_medicine/<str:pk>/', views.update_product, name="updateMedicine"),
+     # url path to pass the ID of the object to be deleted. 
+    path('delete_medicine/<str:pk>/', views.delete_items, name="deleteMedicine"),
 ]

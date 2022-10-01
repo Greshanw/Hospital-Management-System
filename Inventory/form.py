@@ -82,3 +82,10 @@ class InventorySearchForm(forms.ModelForm):
         model = Inventory
         #search fields 
         fields = ['Medicine_name']
+
+#form for the Updating Product details of the Inventory
+class InventoryUpdateForm(forms.ModelForm):
+ class Meta:
+        model = Inventory
+        fields = ['Product_ID','Medicine_name', 'quantity', 'Net_price',  'receive_quantity', 'Vendor',
+                  'reorder_level']
