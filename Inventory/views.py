@@ -73,3 +73,33 @@ def generate_Report(request):
     for stock in queryset:
         writer.writerow(stock)
     return response
+
+
+# view to updating product details
+def update_product(request, pk):
+    queryset = Inventory.objects.get(id=pk)
+    form = InventoryUpdateForm(instance=queryset)
+    if request.method == 'POST':
+        form = InventoryUpdateForm(request.POST, instance=queryset)
+        if form.is_valid():
+            form.save()
+            # message notify after updating
+            messages.success(
+                request, 'Successfully Updated the Product Details')
+            return redirect('/medicines')
+
+    context = {
+        'form': form,
+        "title": "Update  Item",
+    }
+    return render(request, 'InsertProduct.html', context)
+
+
+#view to delete a product from the database.
+def delete_items(request, pk):
+    queryset = Inventory.objects.get(id=pk)
+    if request.method == 'POST':
+        queryset.delete()
+        messages.success(request, 'Successfully Deleted the product')# message notify after deleting
+        return redirect('/medicines')
+    return render(request, 'delete_items.html')

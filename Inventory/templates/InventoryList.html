@@ -42,8 +42,29 @@
     <title>Bootstrap Example</title>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.1/dist/js/bootstrap.bundle.min.js"></script>
   </head>
+
+ 
 <body>
+  
+  {% if messages %}
+  <center>
+  <div class="toast fade show" style="width:400px;height:120px"role="alert" aria-live="assertive" aria-atomic="true">
+    <div class="toast-header">
+      
+      <strong class="me-auto">Inventory Notification</strong>
+      
+      <button type="button" class="btn-close" data-bs-dismiss="toast" aria-label="Close"></button>
+    </div>
+    {% for message in messages %}
+    <div class="toast-body text-center">
+      <div class="alert alert-success" role="alert">{{ message }}</div>
     
+               {% endfor %}
+    </div>
+  </div>
+</center>
+  {% endif %}  
+
     
         <div class="hstack gap-3" style="padding-left: 200px; margin-bottom: 15px;">
             <figure class="text-center" >
@@ -63,24 +84,7 @@
               </form> 
             </div>
         
-      {% if messages %}
-      <center>
-      <div class="toast fade show" style="width:400px;height:120px"role="alert" aria-live="assertive" aria-atomic="true">
-        <div class="toast-header">
-          
-          <strong class="me-auto">Inventory Notification</strong>
-          
-          <button type="button" class="btn-close" data-bs-dismiss="toast" aria-label="Close"></button>
-        </div>
-        {% for message in messages %}
-        <div class="toast-body text-center">
-          <div class="alert alert-success" role="alert">{{ message }}</div>
-        
-                   {% endfor %}
-        </div>
-      </div>
-    </center>
-      {% endif %}  
+     
     <table class="table table-hover table-bordered" >
         <thead class="table-light">
           <tr>
@@ -115,8 +119,8 @@
             <td>{{instance.reorder_level}}</td>
             <td>{{instance.initial_inserted}}</td>
             <td>{{instance.last_updated}}</td>
-            <td><a href="#"><img style="height: 30px; width: 30px;" src="{%static 'images/edit.gif' %}"></a>
-            <td><a href="#"><img style="height: 30px; width: 30px;" src="{%static 'images/delete.gif' %}"></a>
+            <td><a href="{% url 'updateMedicine' instance.id %}"><img style="height: 30px; width: 30px;" src="{%static 'images/edit.gif' %}"></a>
+            <td><a href="{% url 'deleteMedicine' instance.id %}"><img style="height: 30px; width: 30px;" src="{%static 'images/delete.gif' %}"></a>
           </tr>
           {% endfor %}
           
