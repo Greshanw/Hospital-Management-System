@@ -71,3 +71,33 @@ def delete_patient(request, id):
     Patient.objects.filter(id=id).delete()
 
     return redirect('patients')
+
+def edit_patient_page(request, id):
+    patient = Patient.objects.filter(id=id).get()
+    
+    return render(request, 'edit_patient.html', {
+        'patient': patient
+    })
+
+def edit_patient(request, id):
+    try:
+        if request.method == 'POST':
+            name = request.POST.get('name')
+            phone = request.POST.get('phone')
+            dob = request.POST.get('dob')
+            nic = request.POST.get('nic')
+            email = request.POST.get('email')
+            address = request.POST.get('address')
+
+            patient = Patient.objects.get(id=id)
+            patient.name = name
+            patient.phone = phone
+            patient.dob = dob
+            patient.NIC = nic
+            patient.email = email
+            patient.address = address
+            patient.save(update_fields=['name','phone','dob','NIC','email','address'])
+    except:
+        return redirect('patients')
+    
+    return redirect('patients')

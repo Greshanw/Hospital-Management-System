@@ -69,13 +69,13 @@
 </head>
 
 <body>
+    {% include 'base/navbar.html' %}
     <!-- Left Panel -->
     {% include 'base/sidebar.html' %}
     <!-- /#left-panel -->
     <!-- Right Panel -->
     <div id="right-panel" class="right-panel">
         <!-- Header-->
-        {% include 'base/navbar.html' %}
 
         {% block breadcrumbs %}
         
@@ -94,6 +94,7 @@
         <div class="clearfix"></div>
     </div>
     <!-- /#right-panel -->
+    {% include 'base/footer.html' %}
 
     <!-- Scripts -->
     <script src="https://cdn.jsdelivr.net/npm/jquery@2.2.4/dist/jquery.min.js"></script>
