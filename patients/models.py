@@ -2,6 +2,7 @@ from django.db import models
 from datetime import date
 
 class Patient(models.Model):
+    id = models.AutoField(primary_key=True)
     name = models.CharField(max_length=120, unique=True)
     phone = models.CharField(max_length=120)
     dob = models.DateField()

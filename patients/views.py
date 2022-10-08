@@ -1,3 +1,5 @@
+from distutils.log import error
+from django.http import JsonResponse
 from django.http import HttpResponseRedirect, FileResponse
 import csv
 import qrcode
@@ -5,6 +7,7 @@ from multiprocessing import context
 import secrets
 from django.shortcuts import render, redirect
 from django.http.response import StreamingHttpResponse, HttpResponse
+from patients.camera import Camera
 
 from patients.models import Patient
 from django.db.models import Q
@@ -101,3 +104,76 @@ def edit_patient(request, id):
         return redirect('patients')
     
     return redirect('patients')
+
+class qr:
+    def __init__(self):
+        self.code = 'None'
+
+    def setqr(self, code):
+        self.code = code
+
+    def getqr(self):
+        return self.code
+
+obj = qr()
+
+# frameobj = Camera()
+
+def qr_scan_page(request):
+    patient = {
+        "id": 0,
+        "name": "",
+        "phone": "",
+        "dob": "",
+        "nic": "",
+        "email": "",
+        "address": ""
+    }
+
+    return render(request, 'scan_qr.html', {
+        'patient' : patient
+    })
+
+def gen(camera):
+    while True:
+        frame, code = camera.get_frame()
+        codebyte = bytes(str(code), 'utf-8')
+        obj.setqr(code)
+        # print(code)
+        
+        yield (b'--frame\r\n' 
+            b'Content_Type: image/jpeg\r\n\r\n' + frame + b'\r\n\r\n' + codebyte)
+
+def camera_feed(request):
+    frame = gen(Camera())
+    # frame = gen(frameobj)
+
+    return StreamingHttpResponse(frame, content_type='multipart/x-mixed-replace; boundary=frame')
+
+def test(request):
+    code = obj.getqr()
+    patient = {
+        "id": 0,
+        "name": "",
+        "phone": "",
+        "dob": "",
+        "nic": "",
+        "email": "",
+        "address": ""
+    }
+    
+    try:
+        dbres = Patient.objects.get(qr=str(code))
+        patient = {
+            "id": dbres.id,
+            "name": dbres.name,
+            "phone": dbres.phone,
+            "dob": dbres.dob,
+            "nic": dbres.NIC,
+            "email": dbres.email,
+            "address": dbres.address
+        }
+    except : 
+        print("Invalid Code")
+
+    return JsonResponse({'patient': patient})
