@@ -1,7 +1,6 @@
 
 {% extends 'base/base.html' %}
 
-
 {% block title %}Add New Patient{% endblock title %}
 
 {% block breadcrumbs %}
@@ -17,13 +16,13 @@
             </div>
             <div class="col-sm-8">
                 <div class="page-header float-right">
-                    <div class="page-title">
-                        <ol class="breadcrumb text-right">
-                            <li><a href="#">Dashboard</a></li>
-                            <li><a href="#">Patient</a></li>
-                            <li class="active">View Patient</li>
+                    <nav aria-label="breadcrumb">
+                        <ol class="breadcrumb">
+                            <li class="breadcrumb-item"><a href="#">Dashboard</a></li>
+                            <li class="breadcrumb-item"><a href="#">Patient</a></li>
+                            <li class="active breadcrumb-item">View Patient</li>
                         </ol>
-                    </div>
+                      </nav>
                 </div>
             </div>
         </div>
@@ -32,9 +31,8 @@
 {% endblock breadcrumbs %}
 
 {% block content %}
-
     <!-- Orders -->
-    <div class="orders">
+    <div>
         <div class="row">
             <div class="col-xl-12">
                 <div class="card">
