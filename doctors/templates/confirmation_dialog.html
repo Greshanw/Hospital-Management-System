@@ -1,0 +1,14 @@
+{% extends 'dbase/dbase.html' %}
+
+{% block title %}Dashboard{% endblock title %}
+
+<main role="main" class="container">
+    <div class="jumbotron">
+        <form method="POST" action="">
+            {% csrf_token %}
+            <h3>Are you sure to delete this Record</h3>
+            <input class="btn btn-danger" type="submit" value="Confirm">
+            <a href="/doctors"><div class="btn btn-primary">Cancel</div></a>
+        </form>
+    </div>
+</main>
