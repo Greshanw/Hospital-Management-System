@@ -1,7 +1,7 @@
 from django.shortcuts import render, redirect, reverse
 from .models import Inventory
 from django.http import HttpResponse
-from .form import *
+from .form import InventoryCreateForm, InventorySearchForm, InventoryUpdateForm 
 from django.contrib import messages
 import csv
 import cv2
@@ -12,12 +12,15 @@ import barcode
 from barcode.writer import ImageWriter
 from barcode import EAN13
 from io import BytesIO
+from django.views.decorators.http import require_POST, require_GET, require_safe
 
 # Create your views here.
 
 # define what will be displayed in home.html
 
+redirect_url = '/medicines'
 
+@require_safe
 def home(request):
     # title of the view
     title = 'Dashboard of the Inventory'
@@ -33,17 +36,14 @@ def home(request):
     # return the html page and the context
     return render(request, "home.html", context)
 
+
 def list_item(request):
     title = 'List of Medical Products'
     form = InventorySearchForm(request.POST or None)
         
     # assign all the objects in the Inventory to the queryset
     queryset = Inventory.objects.all()
-    context = {
-        "title": title,
-        "queryset": queryset,  # to list out all objects
-         "form": form,   
-    }
+    
     if request.method == 'POST': # if press the search button
         queryset = Inventory.objects.filter(Medicine_name__icontains=form['Medicine_name'].value())
 
@@ -61,15 +61,15 @@ def insert_product(request):
         form.save() # save data in database
         messages.success(request, 'Successfully inserted the Medical product')
         # this allow you the page to be redirected to another after saving data
-        return redirect('/medicines')
+        return redirect(redirect_url)
     context = {
         "form": form,
         "title": "Insert Product",
     }
     return render(request, "InsertProduct.html", context)
 
-
-def generate_Report(request):
+@require_safe
+def generate_report(request):
     response = HttpResponse(content_type='text/csv')
     response['Content-Disposition'] = 'attachment; filename="List of Medicines.csv"'
     writer = csv.writer(response)
@@ -84,6 +84,7 @@ def generate_Report(request):
 
 
 # view to updating product details
+
 def update_product(request, pk):
     queryset = Inventory.objects.get(id=pk)
     form = InventoryUpdateForm(instance=queryset)
@@ -94,7 +95,7 @@ def update_product(request, pk):
             # message notify after updating
             messages.success(
                 request, 'Successfully Updated the Product Details')
-            return redirect('/medicines')
+            return redirect(redirect_url)
 
     context = {
         'form': form,
@@ -104,28 +105,30 @@ def update_product(request, pk):
 
 
 #view to delete a product from the database.
+
 def delete_items(request, pk):
     queryset = Inventory.objects.get(id=pk)
     if request.method == 'POST':
         queryset.delete()
         messages.success(request, 'Successfully Deleted the product')# message notify after deleting
-        return redirect('/medicines')
+        return redirect(redirect_url)
     return render(request, 'delete_items.html')
 
 class scbar:
     def __init__(self):
-        self.B_id = " "
+        self.barco_id = " "
 
-    def setbarco(self, Bid):
-        self.B_id = Bid
+    def setbarco(self, bid):
+        self.barco_id = bid
 
     def getbarco(self):
-        return self.B_id
+        return self.barco_id
 
 
 sc = scbar()
 
 #barcode decoding function
+
 def read_barcodes(frame):
     barcodes = pyzbar.decode(frame)
     for barcode in barcodes:
@@ -144,13 +147,14 @@ def read_barcodes(frame):
             file.write("Detected Barcode:" + barcode_stri)
 
         print(barcode_stri)
-        B_id = int(barcode_stri)
-        B_id = B_id // 10
-        sc.setbarco(str(B_id))
+        barco_id = int(barcode_stri)
+        barco_id = barco_id // 10
+        sc.setbarco(str(barco_id))
         print(sc.getbarco())
     return frame
 
 # main function will turn on the camera then call the decoding function.
+@require_safe
 def main(request):
     # 1- turn on the camera using OpenCV
     camera = cv2.VideoCapture(0)
@@ -175,17 +179,14 @@ if __name__ == '__main__':
     main()
 
 
-def product_Scaned(request):
+@require_safe
+def product_scaned(request):
     title = 'List of Medical Products'
     form = InventorySearchForm(request.POST or None)
         
     # assign all the objects in the Inventory to the queryset
     queryset = Inventory.objects.filter(Product_ID=sc.getbarco())
-    context = {
-        "title": title,
-        "queryset": queryset,  # to list out all objects
-         "form": form,   
-    }
+    
     if request.method == 'POST': # if press the search button
         queryset = Inventory.objects.filter(Medicine_name__icontains=form['Medicine_name'].value())
 

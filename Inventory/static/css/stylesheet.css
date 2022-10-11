@@ -38,7 +38,7 @@ body {
     }
 
     .header {
-        font-family: helvetica;
+        font-family: helvetica , sans-serif;
         color: #337ab7;
         font-size: 50px;
         text-align: center;

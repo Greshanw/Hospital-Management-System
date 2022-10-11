@@ -12,7 +12,7 @@ from django.core.files import File
 
  # this is the Inventory table
 class Inventory(models.Model):
-    Product_ID = models.CharField(max_length=12, blank=True, default=create_new_ref_number)
+    Product_ID = models.CharField(max_length=13, blank=True, default=create_new_ref_number)
     BarCode = models.ImageField(upload_to='images/', blank=True)
     Medicine_name = models.CharField(max_length=50, blank=True, null=True)
     quantity = models.IntegerField(default='0', blank=True, null=True)
@@ -31,7 +31,7 @@ class Inventory(models.Model):
         return self.Medicine_name  # here str used to convert int to string
 
     
-    def create_unique_id():
+    def create_unique_id(self):
         return str(random.randint(1111111111111,9999999999999))
 
     #overriding the save method.
