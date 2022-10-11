@@ -69,14 +69,16 @@
 </head>
 
 <body>
+    {% include 'dbase/dnavbar.html' %}
     <!-- Left Panel -->
-    {% include 'dbase/dsidebar.html' %}
+
+        {% include 'dbase/dsidebar.html' %}
+    
     <!-- /#left-panel -->
     <!-- Right Panel -->
     <div id="right-panel" class="right-panel">
         <!-- Header-->
-        {% include 'dbase/dnavbar.html' %}
-
+        
         {% block breadcrumbs %}
         
         {% endblock breadcrumbs %}
