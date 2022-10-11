@@ -89,8 +89,31 @@
         
 
         {% block breadcrumbs %}
-        
-        {% endblock breadcrumbs %}
+<div class="breadcrumbs">
+    <div class="breadcrumbs-inner">
+        <div class="row m-0">
+            <div class="col-sm-4">
+                <div class="page-header float-left">
+                    <div class="page-title">
+                        <h1>INVENTORY</h1>
+                    </div>
+                </div>
+            </div>
+            <div class="col-sm-8">
+                <div class="page-header float-right">
+                    <div class="page-title">
+                        <ol class="breadcrumb text-right">
+                            <li><a href="/home">Dashboard</a></li>
+                            <li><a href="/medicines">Product List</a></li>
+                            <li class="active"> <a href="/insert_medicine">Insert Product</a></li>
+                        </ol>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock breadcrumbs %}
         <!-- /#header -->
         <!-- Content -->
         <div class="content">
@@ -102,16 +125,16 @@
             <!-- .animated -->
         </div>
         <!-- /.content -->
-        <div class="clearfix"></div>
+        <div class="clearfix" ></div>
         <!-- Footer -->
-        {% include 'ibase/ifooter.html' %}
+        
         <!-- /.site-footer -->
-    
+        {% include 'ibase/ifooter.html' %}
     
     
    
     <!-- /#right-panel -->
-
+    
     <!-- Scripts -->
     <script src="https://cdn.jsdelivr.net/npm/jquery@2.2.4/dist/jquery.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/popper.js@1.14.4/dist/umd/popper.min.js"></script>
