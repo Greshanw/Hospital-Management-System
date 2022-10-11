@@ -31,8 +31,8 @@
 {% endblock breadcrumbs %}
 {% block content %}
 
-<!DOCTYPE html>
-<html>
+<!DOCTYPE html >
+<html lang="en">
 <head>
 	<title>Item List</title>
 
@@ -47,7 +47,7 @@
 <body>
   
   {% if messages %}
-  <center>
+  <div style="padding-left: 450px;" >
   <div class="toast fade show" style="width:400px;height:120px"role="alert" aria-live="assertive" aria-atomic="true">
     <div class="toast-header">
       
@@ -62,7 +62,7 @@
                {% endfor %}
     </div>
   </div>
-</center>
+  </div>
   {% endif %}  
 
     
@@ -86,6 +86,7 @@
         
      
     <table class="table table-hover table-bordered" >
+      <caption></caption>
         <thead class="table-light">
           <tr>
             <th scope="col">Barcode</th>
@@ -104,6 +105,7 @@
           </tr>
         </thead>
         <tbody>
+            {% if queryset %}
             {% for instance in queryset %}
           <tr >
             <th scope="row"><a href="../media/{{instance.BarCode}}">{{instance.BarCode}}</a></th>
@@ -121,11 +123,29 @@
             <td>{{instance.reorder_level}}</td>
             <td>{{instance.initial_inserted}}</td>
             <td>{{instance.last_updated}}</td>
-            <td><a href="{% url 'updateMedicine' instance.id %}"><img style="height: 30px; width: 30px;" src="{%static 'images/edit.gif' %}"></a>
-            <td><a href="{% url 'deleteMedicine' instance.id %}"><img style="height: 30px; width: 30px;" src="{%static 'images/delete.gif' %}"></a>
+            <td><a href="{% url 'updateMedicine' instance.id %}"><img style="height: 30px; width: 30px;" src="{%static 'images/edit.gif' %}" alt=" update"></a>
+            <td><a href="{% url 'deleteMedicine' instance.id %}"><img style="height: 30px; width: 30px;" src="{%static 'images/delete.gif' %}" alt=" delete"></a>
           </tr>
           {% endfor %}
-          
+          {% else %}
+                                        <tr><div style="padding-left: 450px;" >
+                                          <div class="toast fade show" style="width:400px;height:120px"role="alert" aria-live="assertive" aria-atomic="true">
+                                            <div class="toast-header">
+                                              
+                                              <strong class="me-auto">Inventory Notification</strong>
+                                              
+                                              <button type="button" class="btn-close" data-bs-dismiss="toast" aria-label="Close"></button>
+                                            </div>
+                                            
+                                            <div class="toast-body text-center">
+                                              <div class="alert alert-success" role="alert">No Medicine Data</div>
+                                            
+                                                       
+                                            </div>
+                                          </div>
+                                          </div> </tr>
+                                        
+          {% endif %}
         </tbody>
       </table>
 	

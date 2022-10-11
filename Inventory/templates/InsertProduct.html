@@ -31,7 +31,7 @@
 {% endblock breadcrumbs %}
 {% block content %}
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
 	<title>{{title}}</title>
 </head>
@@ -41,10 +41,7 @@
         
 
     <h1 class="display-3 text-left">{{title}}</h1>
-	<!-- <form method='POST' action=''>{% csrf_token %}
-		{{form|crispy}}
-        <input type="submit" value='Save'/>
-    </form> -->
+	
     <div class="row" >
     <div class="col-sm-5" style="font-weight: bolder ; text-align: left;">
                     <!--Start of col-->
@@ -55,10 +52,10 @@
 
                             <!-- Rendering the form -->
                             {{form|crispy}}
-                            <center>
+                            <div style="padding-left: 250px;" >
                             <Button class="btn btn-primary" s
                                 type="submit" style="width: 400px;"  > Submit </Button>
-                            </center>
+                            </div>
 
                         </form>
                     </div>
