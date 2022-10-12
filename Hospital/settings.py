@@ -40,6 +40,7 @@ INSTALLED_APPS = [
     'patients',
     'appoinment',
     'Inventory',
+    'doctors',
     'crispy_forms',
     "crispy_bootstrap5",
 ]
@@ -121,6 +122,9 @@ USE_TZ = True
 # https://docs.djangoproject.com/en/4.1/howto/static-files/
 
 STATIC_URL = 'static/'
+MEDIA_URL = '/media/'
+
+MEDIA_ROOT = BASE_DIR/'media' # saving barcode images in the media folder
 
 CRISPY_ALLOWED_TEMPLATE_PACKS = "bootstrap5"
 

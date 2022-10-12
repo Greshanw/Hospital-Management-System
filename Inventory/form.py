@@ -7,38 +7,38 @@ class InventoryCreateForm(forms.ModelForm):
         model = Inventory
         fields = ['Product_ID','Medicine_name', 'quantity', 'Net_price',  'receive_quantity', 'Vendor',
                   'reorder_level']
+
+    error = 'This field is required'
     #validation the input fields
     def clean_Product_ID(self):
-        Product_ID = self.cleaned_data.get('Product_ID')
-        if not Product_ID:  # if it is blank
-            raise forms.ValidationError('This field is required')
+        product_id = self.cleaned_data.get('Product_ID')
+        if not product_id:  # if it is blank
+            raise forms.ValidationError(self.error)
 
         for instance in Inventory.objects.all():
-            if instance.Product_ID == Product_ID:
+            if instance.Product_ID == product_id:
                 raise forms.ValidationError(
-                    Product_ID + ' is already created')
+                    product_id + ' is already created')
             
-        if len(Product_ID) > 12:
-            raise forms.ValidationError(
-                 ' Quantity should be greater than 0')
-        return Product_ID
+        
+        return product_id
 
     def clean_Medicine_name(self):
-        Medicine_name = self.cleaned_data.get('Medicine_name')
-        if not Medicine_name:
-            raise forms.ValidationError('This field is required')
+        medicine_name = self.cleaned_data.get('Medicine_name')
+        if not medicine_name:
+            raise forms.ValidationError(self.error)
 
         for instance in Inventory.objects.all():
-            if instance.Medicine_name == Medicine_name:
+            if instance.Medicine_name == medicine_name:
                 raise forms.ValidationError(
-                    Medicine_name + ' is already created')
+                    medicine_name + ' is already created')
 
-        return Medicine_name
+        return medicine_name
 
     def clean_quantity(self):
         quantity = self.cleaned_data.get('quantity')
         if not quantity:
-            raise forms.ValidationError('This field is required')
+            raise forms.ValidationError(self.error)
 
         
         if quantity <= 0:
@@ -46,13 +46,47 @@ class InventoryCreateForm(forms.ModelForm):
                  ' Quantity should be greater than 0')
 
         return quantity
+    
+    def clean_receive_quantity(self):
+        receive_quantity = self.cleaned_data.get('receive_quantity')
+        if not receive_quantity:
+            raise forms.ValidationError(self.error)
+
+        return receive_quantity
+    
+    def clean_reorder_level(self):
+        reorder_level = self.cleaned_data.get('reorder_level')
+        if not reorder_level:
+            raise forms.ValidationError(self.error)
+
+        
+        if reorder_level <= 0:
+            raise forms.ValidationError(
+                 ' Reorder Level should be greater than 0')
+
+        return reorder_level
+
+    def clean_Vendor(self):
+        vendor = self.cleaned_data.get('Vendor')
+        if not vendor:
+            raise forms.ValidationError(self.error)
+
+        return vendor
 
 
 # Create a search form
 class InventorySearchForm(forms.ModelForm):
-    # export_to_CSV = forms.BooleanField(required=False)
+    
 
     class Meta:
         model = Inventory
         #search fields 
         fields = ['Medicine_name']
+    
+
+#form for the Updating Product details of the Inventory
+class InventoryUpdateForm(forms.ModelForm):
+ class Meta:
+        model = Inventory
+        fields = ['Product_ID','Medicine_name', 'quantity', 'Net_price',  'receive_quantity', 'Vendor',
+                  'reorder_level']

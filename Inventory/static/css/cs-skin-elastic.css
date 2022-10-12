@@ -1,5 +1,5 @@
 @font-face {
-	font-family: 'icomoon';
+	font-family: 'icomoon' , sans-serif;
 	src:url('../fonts/icomoon/icomoon.eot?-rdnm34');
 	src:url('../fonts/icomoon/icomoon.eot?#iefix-rdnm34') format('embedded-opentype'),
 		url('../fonts/icomoon/icomoon.woff?-rdnm34') format('woff'),
@@ -26,7 +26,7 @@ div.cs-skin-elastic {
 }
 
 .cs-skin-elastic > span::after {
-	font-family: 'icomoon';
+	font-family: 'icomoon ', sans-serif;
 	content: '\e005';
 	-webkit-backface-visibility: hidden;
 	backface-visibility: hidden;
@@ -232,7 +232,7 @@ div.cs-select:focus {
 
 .cs-select > span::after {
 	content: "\f107";
-	font-family: 'Fontawesome';
+	font-family: 'Fontawesome', sans-serif;
 	right: 1em;
 }
 

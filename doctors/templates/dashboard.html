@@ -1,4 +1,4 @@
-{% extends 'base/base.html' %}
+{% extends 'dbase/dbase.html' %}
 
 {% block title %}Dashboard{% endblock title %}
 
@@ -60,10 +60,7 @@
                     <div class="card-body">
                         <div class="row d-flex justify-content-between">
                             <h4 class="box-title">Doctor List</h4>
-                            <!-- <button style="background-color: #8bc34a; border: none;"><a href="#" style="color: black;">CSV</a></button>
-                            <form action="{% url 'doctors' %}" method="get">
-                                <input name="search" class="form-control" type="text" placeholder="Search">
-                            </form> -->
+                            
                         </div>
                     </div>
                     <div class="card-body--">
@@ -88,11 +85,7 @@
                                         <td>{{ p.speciality }}</td>
                                         <td>{{ p.phone }}</td>
                                         <td>{{ p.email }}</td>
-                                        <!-- <td>
-                                            <a href="#">QR</a>
-                                            <i class="fa fa-pencil mx-2"></i>
-                                            <i class="fa fa-trash mx-2"></i>
-                                        </td> -->
+                                        
                                     </tr>
                                     {% endfor %}
                                     {% else %}
