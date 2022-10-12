@@ -1,10 +1,44 @@
-{% load static %}
 
-{% include 'abase/anavbar.html' %}
+{% include 'abase/abase2.html' %}
 
 {% include 'mainnav.html' %}
+{% load static %}
+
+
+
 {% block content %}
-    <img src ="{%static 'images/homepage-hero-bg-short.jpg' %}" width="1535px" height="550px" >
+
+<html lang="en">
+<title>W3.CSS</title>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+<body>
+
+<div class="w3-light-grey w3-padding-60 w3-margin-bottom w3-center">
+  <div  style=" position: relative;
+  text-align: center;
+  color: white; margin-top:-10px">
+<img src ="{%static 'images/homepage-hero-bg-short.jpg' %}" width="1535px" height="550px" >
+   
+  
+  <h1><div style="position: absolute; font-family:Cursive; font-size:90px; top: 40%; left: 30%;transform: translate(-50%, -50%); color:black ">Experts in Health</div></h1>
+   <p  style="position: absolute; font-family:Serif; font-size:30px; top: 55%; left: 27%;transform: translate(-50%, -50%); color:gray">We the healthcare must long been a most of concern. </p>
+    <div style="position: absolute; font-family:Serif; font-size:30px; top: 65%; left: 14%;transform: translate(-50%, -50%);">
+    <a href="{%url 'about' %}"><button  type="button" style="background-color:red;   padding: 15px 32px;" class="btn btn-info btn-lg">READ More About Us</button></a>
+    </div>
+</div>
+
+
+    
+  </div>
+</div>
+
+{% include 'footer.html' %}
+</body>
+</html>
+
+    
+        
    
 {% endblock content %}
-{% include 'footer.html' %}
+

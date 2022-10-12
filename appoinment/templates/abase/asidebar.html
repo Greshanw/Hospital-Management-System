@@ -1,27 +1,24 @@
 
-<aside style="margin-top: 80px;position:absolute;top:90px" id="left-panel" class="left-panel">
-    <nav class="navbar navbar-expand-sm navbar-default">
-        <div id="main-menu" class="main-menu collapse navbar-collapse">
+<aside style="margin-top: 50px;position:absolute;width: 280px;height:300px" >
+    <nav class="navbar navbar-expand">
             <ul class="nav navbar-nav">
                 <li class="active">
                     <a href="{% url 'dashboard' %}"><i class="menu-icon fa fa-laptop"></i>Dashboard </a>
                 </li>
-                <li class="menu-title">Dashboard</li><!-- /.menu-title -->
+                <li class="menu-title"><h3 style="  font-weight: bold;">MY STORY</h3></li><!-- /.menu-title -->
                 <li class="menu-item-has-children dropdown">
                     <a href="#" class="dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"> <i class="menu-icon fa fa-calendar-check"></i>Appoinment</a>
                     <ul class="sub-menu children dropdown-menu">
                        
-                        <li><i class="fa fa-user-plus"></i><a href="{% url 'add_appoinment' %}">Add Appoinment</a></li>
-                        <li><i class="fa fa-table"></i><a href="{% url 'appoinment' %}">View Appoinment</a></li>
+                        <li><i class="fa fa-user-plus"></i><a href="{% url 'add_appoinment' %}">&nbsp;&nbsp;Add Appoinment</a></li>
+                        <li><i class="fa fa-table"></i><a href="{% url 'appoinment' %}">&nbsp;&nbsp;View Appoinment</a></li>
                         </ul>
                 <div style="padding-top: 300px; padding-left: 30px;">
                 <button  type="button" style="background-color:#2196f3" class="btn btn-info btn-lg">LogOut</button>
                 </div>
-            
-            
-                    </ul>
+                  
                 </li>
             </ul>
-        </div><!-- /.navbar-collapse -->
+        <!-- /.navbar-collapse -->
     </nav>
 </aside>

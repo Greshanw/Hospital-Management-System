@@ -1,14 +1,66 @@
-{% include 'abase/navbar.html' %}
+
+{% include 'abase/abase2.html' %}
+
 {% include 'mainnav.html' %}
+{% load static %}
+
 
 
 {% block content %}
+
+<html lang="en">
+<title>W3.CSS</title>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+<body>
+
+<div class="w3-light-grey w3-padding-60 w3-margin-bottom w3-center">
+  <div  style=" position: relative;
+  text-align: center;
+  color: white; margin-top:-10px">
+<img src ="{%static 'images/doctor-stethoscope-hand-hospital-background-gown-94227568.jpg' %}" width="1535px" height="200px" >
+   
+  
+  <h1><div style="position: absolute; top: 50%; left: 50%;transform: translate(-50%, -50%); color:black;font-size:50px ">ABOUT</div></h1>
+</div>
+
+<div class="w3-row-padding w3-content" style="max-width:1400px">
+  <div class="w3-twothird">
+    <img src ="{%static 'images/hospital-surgery-corridor-25068453.jpg' %}" style="width:100%">
     
+    
+  </div>
   
-  
+  <div class="w3-third">
+    <div class="w3-container w3-light-grey">
+      <h2 class="w3-justify">About</h2>
+      <p class="w3-justify" style="color:black">Our cardio hospital, an institution that is built, staffed, and equipped for the diagnosis of disease; both medical and surgical, of the sick and the injured we do treatments. </p>
+    </div>
+    <p class="w3-justify" style="color:black"><b>Experience Doctors</b></p>
+    <div class="w3-white">
+      <div class="w3-container w3-blue w3-padding w3-center" style="width:95%">95%</div>
+    </div>
+    <br>
+    <p class="w3-justify" style="color:black"><b>Modern Equipment</b></p>
+    <div class="w3-white">
+      <div class="w3-container w3-blue w3-padding w3-center" style="width:75%">75%</div>
+    </div>
+    <br>
+    <p class="w3-justify" style="color:black"><b>Our Service</b></p>
+    <div class="w3-white">
+      <div class="w3-container w3-blue w3-padding w3-center" style="width:99%">99%</div>
+    </div>
+    <br>
+    
+  </div>
+</div>
+<br>
+{% include 'footer.html' %}
+</body>
+</html>
+
     
         
    
 {% endblock content %}
 
-{% include 'footer.html' %}
