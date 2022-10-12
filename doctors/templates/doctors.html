@@ -39,17 +39,20 @@
             <div class="col-xl-12">
                 <div class="card">
                     <div class="card-body">
-                        <div class="row d-flex justify-content-between">
+                        <!-- <div class="row d-flex justify-content-between-form-inline"> -->
+                        <div class="form-inline">
                             <h4 class="box-title">Doctor List</h4>
-                            <button style="background-color: #8bc34a; border: none; width: 5%;"><a href="{% url 'doctors-report' %}" style="color: black;">CSV</a></button>
+                            <button style="background-color: #8bc34a; border: none; width: 8%; height:40px; border-radius: 6px; margin-left: 5%;"><a href="{% url 'doctors-report' %}" style="color: black;">CSV</a></button>
                             
                             <form action="{% url 'doctors' %}" method="get">
-                                <input name="search" class="form-control" type="text" placeholder="Search Doctors by name or ID" style="width: 30%;">
+                                <input name="search" class="form-control" type="text" placeholder="Search Doctors by name or ID" style="width: 150%; margin-left: 200%; border-radius: 25px;display: flex;">
+                                <!-- <a href="#"><i class="fa fa-search icon-search"></i></a> -->
                             </form>
                             
                             </div>
 
                         </div>
+
                     </div>
                     <div class="card-body--">
                         <div class="table-stats order-table ov-h">
@@ -78,7 +81,7 @@
                                           
                                             <a href="{%url 'update-doctor' id=p.id%}"><i class="fa fa-pencil mx-2"></i></a>
                                            
-                                            <!-- <a href="confirmation_dialog.html"> -->
+                                            <!-- confirmation_dialog.html -->
                                                 <a type="button" data-toggle="modal" data-target="#deleteModal{{p.id}}">
                                                     <i class="fa fa-trash mx-2"></i></a>
                                                 </a>
