@@ -2504,3 +2504,12 @@ footer.site-footer {
     right: 20px !important; }
 
 /*# sourceMappingURL=style.css.map */
+
+.icon-search{
+  color: #000;
+  font-size: 20px;
+}
+
+.footer-pad{
+  height: 50px;
+}
