@@ -55,27 +55,6 @@ def dashboard(request):
         'doctors': doctors,'doctors_count':doctors_count
     })
 
-#get the id as a parameter to find the specific record and load the UI for update details
-# def update_doctor(request,id):
-#     doctor = Doctor.objects.get(id=id)
-#     template = loader.get_template('update_doctor.html')
-#     context = {
-#     'doctor': doctor,
-#     }
-#     return HttpResponse(template.render(context, request))
-
-# def update_doctor_record(request, id):
-#     name = request.POST.get('name')
-#     speciality = request.POST.get('speciality')
-#     phone = request.POST.get('phone')
-#     email = request.POST.get('email')
-#     doctor = Doctor.objects.get(id=id)
-#     doctor.name = name
-#     doctor.speciality = speciality
-#     doctor.phone = phone
-#     doctor.email = email
-#     doctor.save(update_fields=['name','speciality','phone','email'])
-#     return HttpResponseRedirect(reverse('index'))
 
 def update_doctor_page(request, id):
     doctor = Doctor.objects.filter(id=id).get()
@@ -125,15 +104,10 @@ def doctors_report(request):
 
 #delete doctor
 def delete_doctor(request, id):
-    doctor = Doctor.objects.get(id=id)
-    # doctor.delete()
-    # return redirect('doctors')
-    if request.method == "POST":
-        doctor.delete()
-    context = {
-        "object" : doctor
-    }
-    return render(request,"confirmation_dialog.html",context)
+    Doctor.objects.filter(id=id).delete()
 
-#saerch doctor by name or id
+    return redirect('doctors')
+
+
+
 
