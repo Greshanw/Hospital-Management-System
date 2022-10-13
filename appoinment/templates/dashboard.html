@@ -1,0 +1,86 @@
+
+{% extends 'abase/abase.html' %}
+
+{% block title %}Dashboard{% endblock title %}
+
+{% block breadcrumbs %}
+
+{% endblock breadcrumbs %}
+
+{% block content %}
+<div class="w3-light-grey">
+<div class="row">
+    <div class="col-lg-6 col-md-6">
+        <div class="card">
+            <div class="card-body">
+                <div class="stat-widget-five">
+                    <div class="stat-icon dib ">
+                        <i class="fa fa-calendar"></i>
+                    </div> 
+                    <div class=" stat-content">
+                        <div class="text-left dib">
+                            <div class="stat-text"><span class="count">{{ appoinments_count }}</span></div>
+                            <div class="stat-heading"><h3>Appoinment</h3></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- /Widgets -->
+
+    <!-- Orders -->
+    <div class="orders">
+        <div class="row">
+            <div class="col-xl-12">
+                <div class="card">
+                    <div class="card-body">
+                        
+                            <h1 class="w3-justify">Appoinment</h1>
+                            
+                        </div>
+                    </div>
+                    <div class="card-body--">
+                        <div class="table-stats order-table ov-h">
+                            <table class="table ">
+                                <thead>
+                                    <tr>
+                                        <th style="color:black;  font-weight: bold;" class="serial">ID</th>
+                                        <th style="color:black;  font-weight: bold;">Doctor Name</th>
+                                        <th style="color:black;  font-weight: bold;">Patient Name</th>
+                                        <th style="color:black;  font-weight: bold;">Date</th>
+                                        <th style="color:black;  font-weight: bold;">Time</th>
+                                        <!-- <th></th> -->
+                                     
+                                    </tr>
+                                </thead>
+                                    {% if appoinments %}
+                                    {% for a in appoinments %}
+                                   
+                                    <tr><div class="row">
+  
+
+                
+                                        <td class="serial">{{ forloop.counter }}</td>
+                                        <td>{{ a.Doctor_Name }}</td>
+                                        <td>{{ a.Patient_Name }}</td>
+                                        <td>{{ a.Date }}</td>
+                                        <td>{{ a.Time }}</td>
+                                      
+                                    </tr></div>
+                                    {% endfor %}
+                                    {% else %}
+                                        <tr><td>No Appoinment Data</td></tr>
+                                    {% endif %}
+                                </tbody>
+                            </table>
+                        </div> <!-- /.table-stats -->
+                    </div>
+                </div> <!-- /.card -->
+            </div>  <!-- /.col-lg-8 -->
+        </div>
+    </div>
+    <!-- /.orders -->
+{% endblock content %}
+{% include 'footer.html' %}

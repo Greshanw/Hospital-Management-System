@@ -1,46 +1,29 @@
-{% load static %}
-<!doctype html>
 
-<html lang="en">
-  <head>
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.1/dist/css/bootstrap.min.css" rel="stylesheet">
-    <link href="https://getbootstrap.com/docs/5.2/assets/css/docs.css" rel="stylesheet">
-    <title>Bootstrap Example</title>
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.1/dist/js/bootstrap.bundle.min.js"></script>
-  </head>
-  <body class="p-3 m-0 border-0 bd-example">
 
-    <!-- Example Code -->
+{% load static %}    
+<nav class="navbar navbar-expand-lg col py-3" style="background-color: #e3f2fd;" >
+  <div class="container-fluid d-flex">
+    <div class="flex-shrink-1">
+      <a class="navbar-brand" style="font-family: 'Courier New', Courier, monospace;font-size: 35px; color: Navy;" href="/home"><img alt="logo" style="height: 50px; width: 50px;" src="{%static 'images/health.png' %}"/>Cardio</a>
+    </div>
     
-    <nav class="navbar navbar-expand-lg " style="background-color: #e3f2fd; margin-bottom: 15px;" >
-      <div class="container-fluid">
-        <a class="navbar-brand" style="font-family: 'Courier New', Courier, monospace;font-size: 35px; color: Navy;" href="/home"><img style="height: 50px; width: 50px;" src="{%static 'images/health.png' %}"/>Cardio</a>
-        <button class="navbar-toggler collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-          <span class="navbar-toggler-icon"></span>
-        </button>
-        <div class="navbar-collapse collapse" id="navbarSupportedContent" style="padding-left: 630px;">
-          <ul class="navbar-nav me-auto mb-2 mb-lg-0">
-            <li class="nav-item">
-              <a class="nav-link active" style="font-size: 20px; color: Navy;"  aria-current="page" href="tel:0112234859"><img style="height: 30px; width: 30px;" src="{%static 'images/phone.png' %}"/>0112234859</a>
-            </li>
-            <li class="nav-item">
-              <a class="nav-link active" style="font-size: 20px; color: Navy;"  "><img style="height: 30px; width: 30px;" src="{%static 'images/clock.png' %}"/>Open - Weekday & Weekend</a>
-            </li>
-            
-            <li class="nav-item">
-              <a class="nav-link active" style="font-size: 20px; color: Navy;"  href="mailto:m.cardio@gmail.com"><img style="height: 30px; width: 30px;" src="{%static 'images/at.png' %}"/>cardio@gmail.com</a>
-            </li>
-          </ul>
-          
-        </div>
-      </div>
-    </nav>
-    
-    
-    <!-- End Example Code -->
-  </body>
-</html>
-
-<!--  -->
+    <div class="navbar-collapse collapse justify-content-end" id="navbarSupportedContent">
+      <button class="navbar-toggler collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <ul class="navbar-nav mb-2 mb-lg-0">
+        <li class="nav-item">
+          <a class="nav-link active" style="font-size: 20px; color: Navy;" aria-current="page" href="tel:0112234859"><img alt="icon" style="height: 30px; width: 30px;" src="{%static 'images/phone.png' %}"/>0112234859</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link active" style="font-size: 20px; color: Navy;"><img alt="icon" style="height: 30px; width: 30px;" src="{%static 'images/clock.png' %}"/>Open - Weekday & Weekend</a>
+        </li>
+        
+        <li class="nav-item">
+          <a class="nav-link active" style="font-size: 20px; color: Navy;"  href="mailto:m.cardio@gmail.com"><img alt="icon" style="height: 30px; width: 30px;" src="{%static 'images/at.png' %}"/>cardio@gmail.com</a>
+        </li>
+      </ul>
+      
+    </div>
+  </div>
+</nav>
