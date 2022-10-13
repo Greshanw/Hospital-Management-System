@@ -47,7 +47,7 @@
                     </div>
                     <div class="card-body--">
                         <div class="table-stats order-table ov-h">
-                            <table class="table ">
+                            <table class="table" aria-describedby="data">
                                 <thead>
                                     <tr>
                                         <th class="serial">#</th>
@@ -71,13 +71,13 @@
                                             <a href="{% url 'generate-qr' qr=p.qr%}">QR</a>
                                             <a type="button" href="{% url 'edit-patient' id=p.id %}"><i class="fa fa-pencil mx-2"></i></a>
                                             <a type="button" data-toggle="modal" data-target="#deleteModal{{p.id}}">
-                                                <i class="fa fa-trash mx-2"></i>
+                                                <em class="fa fa-trash mx-2"></em>
                                             </a>
                                             <div class="modal fade" id="deleteModal{{p.id}}" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
                                                 <div class="modal-dialog" role="document">
                                                   <div class="modal-content text-center">
                                                     <div class="modal-header">
-                                                      <h5 class=" modal-title" id="exampleModalLabel">Modal title</h5>
+                                                      <h5 class=" modal-title" id="exasmpleModalLabel">Modal title</h5>
                                                       <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                                                         <span aria-hidden="true">&times;</span>
                                                       </button>
