@@ -1,6 +1,7 @@
 <!-- load all static files -->
 {% extends 'ibase/ibase.html' %}
 {% load static %}
+
 {% block content %}
 <!DOCTYPE html>
 
@@ -17,7 +18,7 @@
     <!-- Bootstrap core CSS -->
     <link href="{% static 'css/stylesheets.css' %}" rel="stylesheet">
     <link href="{% static 'css/bootstrap.min.css' %}" rel="stylesheet">
-    <link href="{% static 'css/navbar-top-fixed.css' %}" rel="stylesheet">
+    
 
     <script src="https://cdn.jsdelivr.net/npm/chart.js@3.5.0/dist/chart.min.js"></script>
     <script>
@@ -105,7 +106,7 @@
 
 </head>
 
-<body >
+<body  >
     <!--include the navbar content here -->
     
     
@@ -218,7 +219,7 @@
         </div>
         </div>
     </div>
-        
+
     
     <script src="https://code.jquery.com/jquery-3.4.1.slim.min.js"
         integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n"

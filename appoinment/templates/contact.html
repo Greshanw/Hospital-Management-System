@@ -1,0 +1,103 @@
+{% include 'abase/abase2.html' %}
+
+{% include 'mainnav.html' %}
+{% load static %}
+
+
+
+{% block content %}
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+<title>W3.CSS</title>
+</head>
+<body>
+
+<div class="w3-light-grey w3-padding-60 w3-margin-bottom w3-center">
+  <div  style=" position: relative;
+  text-align: center;
+  color: white; margin-top:-10px">
+<img src ="{%static 'images/1000_F_268780285_xDMSBdVomzEPoAjwsmLPj52AnTxTa3GO.jpg' %}" alt="img" width="1535px" height="200px" >
+   
+  
+  <h1><div style="position: absolute; top: 50%; left: 50%;transform: translate(-50%, -50%); color:black; font-size:50px">CONTACT US</div></h1>
+</div>
+
+<div class="w3-row-padding w3-content" style="max-width:1400px">
+  <div class="w3-twothird">
+    <!-- Image of location/map -->
+	<div class="mapouter">
+<div class="gmap_canvas">
+<iframe width="100%" height="294" id="gmap_canvas" src="https://maps.google.com/maps?q=371/A,%20kulathunga%20road,%20udahamulla,panadura&t=&z=13&ie=UTF8&iwloc=&output=embed">
+</iframe><a href="https://putlocker-is.org"></a>
+<br>
+
+<style>.mapouter{position:relative;text-align:right;height:294px;width:808px;}</style>
+<a href="https://www.embedgooglemap.net"></a>
+<style>.gmap_canvas {overflow:hidden;background:none!important;height:294px;width:808px;}</style>
+</div></div>
+<br>
+<div style="width: 800px;
+  padding: 10px;
+  border: 5px solid blue;
+  background-color:blue;
+  margin: 0px;">
+  <table>
+<tr>
+<th style="color:white; font-size:20px">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Address</th>
+<th style="color:white; font-size:20px">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Phone</th>
+<th style="color:white; font-size:20px">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Email</th>
+</tr>
+<tr>
+<td style=" font-size:19px">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;No:34,</td>
+<td style=" font-size:19px">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;  0112234859</td>
+<td style=" font-size:19px">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; cardio@gmail.com</td>
+</tr>
+<tr>
+<td style=" font-size:19px">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Maha Widiya ,</td>
+<td style=" font-size:19px">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp;0112284938</td>
+<td style=" font-size:19px">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</td>
+</tr>
+<tr>
+<td style=" font-size:19px">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Colombo 5.</td>
+<td></td>
+<td></td>
+</tr>
+</table></div>
+    
+    
+  </div>
+  
+  <div class="w3-third">
+    <div class="w3-container w3-light-grey">
+      <h2  style="position: absolute;  font-size:30px; top: 52%; left: 60%;transform: position: absolute; ">Get In Touch</h2>
+   
+      <table>
+      <th>
+<tr>
+<td><input style="position: absolute; top: 62%; left: 60%;width: 20%;padding: 12px 20px;box-sizing: border-box;background-color: #f8f8f8;border: 3px solid #f8f8f8;-webkit-transition: 0.5s;transition: 0.5s;outline: none;" type="text" id="fname" name="fname" value="Your Name"></td>
+<td><input style="position: absolute; top: 62%; left: 82%; width: 19%;padding: 12px 20px;box-sizing: border-box;background-color: #f8f8f8;border: 3px solid #f8f8f8;-webkit-transition: 0.5s;transition: 0.5s;outline: none;" type="text" id="email" name="email" value="Your Email"></td>
+</tr>
+</table>
+ <textarea style="position: absolute; top: 72%; left: 60%;width: 40%;height: 150px;padding: 12px 20px;box-sizing: border-box;border: 2px solid black;border-radius: 4px;background-color: #f8f8f8;font-size: 16px;resize: none;">Your Message</textarea>
+<br>
+<input style=" position: absolute; top: 100%; left: 60%;background-color: darkblue;border: none;color: white;padding: 16px 50px;text-decoration: none;margin: 4px 2px; cursor: pointer;" type="submit" value="Send Message">
+   
+    <br>
+    
+  </div>
+</div></div>
+<br><br>
+{% include 'footer.html' %}
+</body>
+</html>
+
+    
+        
+   
+{% endblock content %}
+

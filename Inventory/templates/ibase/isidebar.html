@@ -1,16 +1,17 @@
 {% load static %}
-<aside id="left-panel" class="left-panel" style="top: 143px; position: absolute;">
+<aside id="left-panel" class="left-panel " style="top: 143px; position: absolute;">
     <nav class="navbar navbar-expand-sm navbar-default">
         <div id="main-menu" class="main-menu collapse navbar-collapse">
             <ul class="nav navbar-nav">
                 <li class="active">
-                    <a class="navbar-brand"  style="font-size: 25px;" href="/home">Dashboard</a>
+                    <a class="navbar-brand"  style=" font-size: 22px;" href="/home"><i class="menu-icon fa fa-laptop"></i>Dashboard</a>
                 </li>
+                <li class="menu-title">Inventory Dashboard</li>
                 <li class="menu-item-has-children dropdown">
-                    <a style="font-size: 18px;" href="#" class="dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"> <img style="height: 30px; width: 30px;" src="{%static 'images/inventory.png' %}"/> Inventory</a>
+                    <a style="font-size: 18px;" href="#" class="dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"> <img style="height: 30px; width: 30px;" src="{%static 'images/inventory.png' %}" alt=" sidebar image"/> Inventory</a>
                     <ul class="sub-menu children dropdown-menu">
-                        <li><a class="nav-link active" aria-current="page" style="font-size: 18px;" href="/medicines"> <img style="height: 30px; width: 30px;" src="{%static 'images/list.png' %}"/>Inventory List</a></li>
-                        <a class="nav-link active" style="font-size: 18px;" href="/insert_medicine"> <img style="height: 30px; width: 30px;" src="{%static 'images/insert.png' %}"/>Insert Medicine</a>
+                        <li><a class="nav-link active" aria-current="page" style="font-size: 18px;" href="/medicines"> <img style="height: 30px; width: 30px;" src="{%static 'images/list.png' %}" alt=" sidebar image"/>Inventory List</a></li>
+                        <a class="nav-link active" style="font-size: 18px;" href="/insert_medicine"> <img style="height: 30px; width: 30px;" src="{%static 'images/insert.png' %}" alt=" sidebar image"/>Insert Medicine</a>
                     </ul>
                 </li>
                 <div style="padding-top: 400px; padding-left: 30px;">

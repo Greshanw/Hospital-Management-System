@@ -3,9 +3,11 @@
 {% load static %}
 <!-- renders the crispy form -->
 {% load crispy_forms_tags %}
+
 {% block content %}
-<!DOCTYPE html>
-<html>
+
+<!DOCTYPE html >
+<html lang="en">
 <head>
 	<title>Item List</title>
 
@@ -15,8 +17,29 @@
     <title>Bootstrap Example</title>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.1/dist/js/bootstrap.bundle.min.js"></script>
   </head>
+
+ 
 <body>
+  
+  {% if messages %}
+  <div style="padding-left: 450px;" >
+  <div class="toast fade show" style="width:400px;height:120px"role="alert" aria-live="assertive" aria-atomic="true">
+    <div class="toast-header">
+      
+      <strong class="me-auto">Inventory Notification</strong>
+      
+      <button type="button" class="btn-close" data-bs-dismiss="toast" aria-label="Close"></button>
+    </div>
+    {% for message in messages %}
+    <div class="toast-body text-center">
+      <div class="alert alert-success" role="alert">{{ message }}</div>
     
+               {% endfor %}
+    </div>
+  </div>
+  </div>
+  {% endif %}  
+
     
         <div class="hstack gap-3" style="padding-left: 200px; margin-bottom: 15px;">
             <figure class="text-center" >
@@ -29,51 +52,38 @@
               
             <a class="btn btn-primary ms-auto" href="{%url 'generate_report'%}">CSV</a></button>
             <div class="vr"></div>
-            <button type="button" class="btn btn-primary active" data-bs-toggle="button" aria-pressed="true">Scan Barcode</button>
+            <a class="btn btn-primary ms-auto" href="{%url 'scan_barcode' %}">Scan Barcode</a>
             <form method="post" action='' class="d-flex" style="padding-bottom: 14px ;"> {% csrf_token %}
                 {{form|crispy}}
                 <input class="btn btn-outline-success" type="submit" style="margin-left: 5px; height: 50px; width: auto; margin-top: 25px;">
               </form> 
             </div>
         
-      {% if messages %}
-      <center>
-      <div class="toast fade show" style="width:400px;height:120px"role="alert" aria-live="assertive" aria-atomic="true">
-        <div class="toast-header">
-          
-          <strong class="me-auto">Inventory Notification</strong>
-          
-          <button type="button" class="btn-close" data-bs-dismiss="toast" aria-label="Close"></button>
-        </div>
-        {% for message in messages %}
-        <div class="toast-body text-center">
-          <div class="alert alert-success" role="alert">{{ message }}</div>
-        
-                   {% endfor %}
-        </div>
-      </div>
-    </center>
-      {% endif %}  
+     
     <table class="table table-hover table-bordered" >
+      <caption></caption>
         <thead class="table-light">
           <tr>
-            <th scope="col">Product_ID</th>
-            <th scope="col">Medicine_name</th>
-            <th scope="col">quantity</th>
-            <th scope="col">Net_price</th>
-            <th scope="col">receive_quantity</th>
+            <th scope="col">Barcode</th>
+            <th scope="col">Product ID</th>
+            <th scope="col">Medicine Name</th>
+            <th scope="col">Quantity</th>
+            <th scope="col">Net Price</th>
+            <th scope="col">Receive Quantity</th>
             <th scope="col">Vendor</th>
-            <th scope="col">reorder_level</th>
-            <th scope="col">initial_inserted</th>
-            <th scope="col">last_updated</th>
+            <th scope="col">Reorder Level</th>
+            <th scope="col">Initial Inserted</th>
+            <th scope="col">last Updated</th>
             <th scope="col">Update</th>
             <th scope="col">Delete</th>
 
           </tr>
         </thead>
         <tbody>
+            {% if queryset %}
             {% for instance in queryset %}
           <tr >
+            <th scope="row"><a href="../media/{{instance.BarCode}}">{{instance.BarCode}}</a></th>
             <th scope="row">{{instance.Product_ID}}</th>
             <td >{{instance.Medicine_name}}</td>
             {% if instance.quantity <= instance.reorder_level %} <td
@@ -88,15 +98,33 @@
             <td>{{instance.reorder_level}}</td>
             <td>{{instance.initial_inserted}}</td>
             <td>{{instance.last_updated}}</td>
-            <td><a href="#"><img style="height: 30px; width: 30px;" src="{%static 'images/edit.gif' %}"></a>
-            <td><a href="#"><img style="height: 30px; width: 30px;" src="{%static 'images/delete.gif' %}"></a>
+            <td><a href="{% url 'updateMedicine' instance.id %}"><img style="height: 30px; width: 30px;" src="{%static 'images/edit.gif' %}" alt=" update"></a>
+            <td><a href="{% url 'deleteMedicine' instance.id %}"><img style="height: 30px; width: 30px;" src="{%static 'images/delete.gif' %}" alt=" delete"></a>
           </tr>
           {% endfor %}
-          
+          {% else %}
+                                        <tr><div style="padding-left: 450px;" >
+                                          <div class="toast fade show" style="width:400px;height:120px"role="alert" aria-live="assertive" aria-atomic="true">
+                                            <div class="toast-header">
+                                              
+                                              <strong class="me-auto">Inventory Notification</strong>
+                                              
+                                              <button type="button" class="btn-close" data-bs-dismiss="toast" aria-label="Close"></button>
+                                            </div>
+                                            
+                                            <div class="toast-body text-center">
+                                              <div class="alert alert-success" role="alert">No Medicine Data</div>
+                                            
+                                                       
+                                            </div>
+                                          </div>
+                                          </div> </tr>
+                                        
+          {% endif %}
         </tbody>
       </table>
 	
-
+      
 </body>
 </html>
 {% endblock content %}

@@ -1,22 +1,27 @@
-{% load static %}
-
-<header id="header" class="header">
-    <div class="top-left">
-        <div class="navbar-header">
-            <a id="menuToggle" class="menutoggle"><i class="fa fa-bars"></i></a>
-        </div>
+{% load static %}    
+<nav class="navbar navbar-expand-lg col py-3" style="background-color: #e3f2fd;" >
+  <div class="container-fluid d-flex">
+    <div class="flex-shrink-1">
+      <a class="navbar-brand" style="font-family: 'Courier New', Courier, monospace;font-size: 35px; color: Navy;" href="/home"><img alt="logo" style="height: 50px; width: 50px;" src="{%static 'images/health.png' %}"/>Cardio</a>
     </div>
-    <div class="top-right">
-        <div class="header-menu">
-            <div class="header-left">
-                <button class="search-trigger"><i class="fa fa-search"></i></button>
-                <div class="form-inline">
-                    <form class="search-form">
-                        <input class="form-control mr-sm-2" type="text" placeholder="Search ..." aria-label="Search">
-                        <button class="search-close" type="submit"><i class="fa fa-close"></i></button>
-                    </form>
-                </div>
-            </div>
-        </div>
+    
+    <div class="navbar-collapse collapse justify-content-end" id="navbarSupportedContent">
+      <button class="navbar-toggler collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <ul class="navbar-nav mb-2 mb-lg-0">
+        <li class="nav-item">
+          <a class="nav-link active" style="font-size: 20px; color: Navy;" aria-current="page" href="tel:0112234859"><img alt="icon" style="height: 30px; width: 30px;" src="{%static 'images/phone.png' %}"/>0112234859</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link active" style="font-size: 20px; color: Navy;"><img alt="icon" style="height: 30px; width: 30px;" src="{%static 'images/clock.png' %}"/>Open - Weekday & Weekend</a>
+        </li>
+        
+        <li class="nav-item">
+          <a class="nav-link active" style="font-size: 20px; color: Navy;"  href="mailto:m.cardio@gmail.com"><img alt="icon" style="height: 30px; width: 30px;" src="{%static 'images/at.png' %}"/>cardio@gmail.com</a>
+        </li>
+      </ul>
+      
     </div>
-</header>
+  </div>
+</nav>

@@ -1,0 +1,146 @@
+
+{% include 'abase/abase2.html' %}
+
+{% include 'mainnav.html' %}
+{% load static %}
+
+
+
+{% block content %}
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+<title>W3.CSS</title>
+<style>
+form {border: 3px solid black; background-color: 	#E5E4E2; width: 50%; height:70%; margin:100px}
+
+
+input[type=text] {
+  width: 60%;
+  padding: 12px 20px;
+  display: inline-block;
+  border: 1px solid black;
+  box-sizing: border-box;
+}
+input[type=password] {
+  width: 60%;
+  padding: 12px 20px;
+  display: inline-block;
+  border: 1px solid black;
+  box-sizing: border-box;
+}
+
+button {
+  background-color: #04AA6D;
+  color: white;
+  padding: 14px 2px;
+  margin: 8px 0;
+  border: none;
+  cursor: pointer;
+  width: 100%;
+}
+
+button:hover {
+  opacity: 0.8;
+}
+
+.cancelbtn {
+  width: auto;
+  padding: 10px 18px;
+  background-color: #f44336;
+}
+
+.imgcontainer {
+  text-align: center;
+  margin: 24px 0 12px 0;
+}
+
+img.avatar {
+  width: 40%;
+  border-radius: 50%;
+}
+
+.container {
+  padding: 40px;
+}
+
+span.psw {
+  float: right;
+  padding-top: 16px;
+}
+
+/* Change styles for span and cancel button on extra small screens */
+@media screen and (max-width: 300px) {
+  span.psw {
+     display: block;
+     float: none;
+  }
+  .cancelbtn {
+     width: 100%;
+  }
+}
+</style>
+</head>
+<body>
+
+<div class="w3-light-grey w3-padding-60 w3-margin-bottom w3-center">
+  <div  style=" position: relative;
+  text-align: center;
+  color: white; margin-top:-10px">
+<img src ="{%static 'images/lovepik-medical-background-of-doctors-image_500692338.jpg' %}" alt="img" width="1535px" height="780px" >
+   
+  
+  <h1><div style="position: absolute; top: 10%; left: 68%;transform: translate(-50%, -50%); color:black;font-size:40px;font-family:Cursive ">ADMIN REGISTER</div></h1>
+<div style="position: absolute; top: 10%; left: 40%">
+<body style="background-color:#f1f1f1">
+
+
+
+<form action="/action_page.php" method="post"><h2 style="position: absolute; top: 13%; left: 10%; color:black">SIGN UP</h2>
+<em class='fas fa-user-alt' style='font-size:20px;position: absolute;top: 16%; left: 53%;color:black'></em>
+ 
+
+
+
+  <div class="container">
+<br>
+<div style=" left: 10%">
+    <input style="left: -10%; width: 40%;padding: 12px ;margin-right:650px;border: 1px solid black" type="text" placeholder="Frist Name" name="fname" required>
+    <br>   <br>  
+    <input style="left: 10%; width: 40%;padding: 12px 20px;margin-right:650px;border: 1px solid black" type="text" placeholder="Last Name" name="lname" required>
+    <br><br>  
+     <input style="left: 10%; width: 40%;padding: 12px 20px;margin-right:650px;border: 1px solid black" type="text" placeholder="Admin Name" name="adminname" required>
+    <br><br>  
+    <input style="left: 10%; width: 40%;padding: 12px 20px;margin-right:650px;border: 1px solid black" type="text" placeholder="Email"  required>
+    <br>  <br>
+     <input style="width: 40%;padding: 12px 20px;display: inline-block;margin-right:650px;border: 1px solid black;box-sizing: border-box;"  type="password" placeholder="Re Enter Password" required>
+    <br><br>
+    <input style="width: 40%;padding: 12px 20px;display: inline-block;margin-right:650px;border: 1px solid black;box-sizing: border-box;"  type="password" placeholder="Re Enter Password"  required>
+    <br>
+    <br><table><th>
+<tr>
+<td><a href="{%url 'loginsign' %}"><button style="  color: white; position: absolute; top: 75%; left: 10%; width: 10%;padding: 12px 20px;box-sizing: border-box;background-color: purple;border: 3px solid #f8f8f8;-webkit-transition: 0.5s;transition: 0.5s;outline: none;" type="submit">SIGN UP</button></a></td>
+</tr>
+</table>  
+  </div>
+  <br><br>
+
+</form>
+
+    
+  </div>
+</div>
+
+{% include 'footer.html' %}
+</body>
+</html>
+
+    
+        
+   
+{% endblock content %}
+
