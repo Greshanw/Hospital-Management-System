@@ -5,25 +5,26 @@
 {% block title %}View Doctors{% endblock title %}
 
 {% block breadcrumbs %}
+
 <div class="breadcrumbs">
-    <div class="breadcrumbs-inner">
-        <div class="row m-0">
-            <div class="col-sm-4">
-                <div class="page-header float-left">
+    <div class="breadcrumbs-inner p-2">
+        <div class="row m-0 m-auto bg-white">
+            <div class="col-sm-4 my-auto">
+                <div class="page-header float-left ">
                     <div class="page-title">
-                        <h1>Dashboard</h1>
+                        <h4 class="">Dashboard</h4>
                     </div>
                 </div>
             </div>
             <div class="col-sm-8">
                 <div class="page-header float-right">
-                    <div class="page-title">
-                        <ol class="breadcrumb text-right">
-                            <li><a href="#">Dashboard</a></li>
-                            <li><a href="#">Doctors</a></li>
-                            <li class="active">View Doctor</li>
+                    <nav aria-label="breadcrumb">
+                        <ol class="breadcrumb bg-white m-0">
+                            <li class="breadcrumb-item"><a href="{%url 'dashboard' %}">Dashboard</a></li>
+                            <li class="breadcrumb-item"><a href="{%url 'doctors' %}">Doctors</a></li>
+                            <li class="active breadcrumb-item">View Doctors</li>
                         </ol>
-                    </div>
+                      </nav>
                 </div>
             </div>
         </div>
@@ -41,11 +42,11 @@
                     <div class="card-body">
                         <!-- <div class="row d-flex justify-content-between-form-inline"> -->
                         <div class="form-inline">
-                            <h4 class="box-title">Doctor List</h4>
+                            <h4 class="box-title">Doctors List</h4>
                             <button style="background-color: #8bc34a; border: none; width: 8%; height:40px; border-radius: 6px; margin-left: 5%;"><a href="{% url 'doctors-report' %}" style="color: black;">CSV</a></button>
                             
                             <form action="{% url 'doctors' %}" method="get">
-                                <input name="search" class="form-control" type="text" placeholder="Search Doctors by name or ID" style="width: 150%; margin-left: 200%; border-radius: 25px;display: flex;">
+                                <input name="search" class="form-control" type="text" placeholder="Search Doctors by Name or ID" style="width: 150%; margin-left: 200%; border-radius: 25px;display: flex;">
                                 <!-- <a href="#"><i class="fa fa-search icon-search"></i></a> -->
                             </form>
                             
