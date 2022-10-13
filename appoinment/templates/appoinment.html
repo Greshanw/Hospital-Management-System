@@ -63,19 +63,19 @@
                                     {% if appoinments %}
                                     {% for a in appoinments %}
                                     <tr>
-                                         <!-- <td class="serial">{{ forloop.counter }}</td>
-                                        --><td class="serial">{{ a.id }}</td>
+                                      
+                                        <td class="serial">{{ a.id }}</td>
                                         <td>{{ a.Doctor_Name }}</td>
                                         <td>{{ a.Patient_Name }}</td>
                                         <td>{{ a.Date }}</td>
                                         <td>{{ a.Time }}</td>
                                         <td>
-                                        <a href="{% url 'update_appoinment' id=a.id %}"><i class="fa fa-pencil mx-2"></i></a>
+                                        <a href="{% url 'update_appoinment' id=a.id %}"><em class="fa fa-pencil mx-2"></em></a>
                                     
 										
                                            <!-- confirmation_dialog.html -->
                                                 <a type="button" data-toggle="modal" data-target="#deleteModal{{a.id}}">
-                                                    <i class="fa fa-trash mx-2"></i></a>
+                                                    <em class="fa fa-trash mx-2"></em></a>
                                                </a>
                                             <div class="modal fade" id="deleteModal{{a.id}}" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
                                                     <div class="modal-dialog" role="document">
