@@ -8,10 +8,13 @@
 
 {% block content %}
 
+<!DOCTYPE html>
 <html lang="en">
-<title>W3.CSS</title>
+<head>
+
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+<title>W3.CSS</title>
 <body>
 
 <div class="w3-light-grey w3-padding-60 w3-margin-bottom w3-center">
@@ -29,7 +32,7 @@
   display: inline-block;
   font-size: 16px;
   margin: 4px 2px; 
-  cursor: pointer;border-radius: 50%;" ><img src ="{%static 'images/istockphoto-1189304032-612x612.jpg' %}" width="70px" height="70px"><a style=" color:white;" href=""><br>Doctor</button></a>
+  cursor: pointer;border-radius: 50%;" ><img src ="{%static 'images/istockphoto-1189304032-612x612.jpg' %}" width="70px" height="70px" alt="img"><a style=" color:white;" href=""><br>Doctor</button></a>
   &nbsp;&nbsp;&nbsp;<button style=" background-color:#0047AB;
   border: none;
   color: white;
@@ -39,7 +42,7 @@
   display: inline-block;
   font-size: 16px;
   margin: 4px 12px;
-  cursor: pointer;border-radius: 50%;" ><img src ="{%static 'images/images (2).jpg' %}" width="70px" height="70px"><a style=" color:white;" href="{%url 'patients' %}"><br>Patient</button>
+  cursor: pointer;border-radius: 50%;" ><img src ="{%static 'images/images (2).jpg' %}" width="70px" height="70px" alt="img"><a style=" color:white;" href="{%url 'patients' %}"><br>Patient</button>
    <button style=" background-color: #0047AB;
   border: none;
   color: white;
@@ -49,7 +52,7 @@
   display: inline-block;
   font-size: 16px;
   margin: 4px 13px;
-  cursor: pointer;border-radius: 50%;" ><img src ="{%static 'images/download.jpg' %}" width="70px" height="70px"><a style=" color:white;" href="{%url 'dashboard' %}"><br>Appointment</button>
+  cursor: pointer;border-radius: 50%;" ><img src ="{%static 'images/download.jpg' %}" width="70px" height="70px" alt="img"><a style=" color:white;" href="{%url 'dashboard' %}"><br>Appointment</button>
     <button style=" background-color: #0047AB; 
   border: none;
   color: white;
@@ -59,7 +62,7 @@
   display: inline-block;
   font-size: 16px;
   margin: 4px 12px;
-  cursor: pointer;border-radius: 50%;" ><img src ="{%static 'images/3.jpeg' %}" width="70px" height="70px"><a style=" color:white;" href="{%url 'medicineList' %}"><br>Inventory</button>
+  cursor: pointer;border-radius: 50%;" ><img src ="{%static 'images/3.jpeg' %}" width="70px" height="70px" alt="img"><a style=" color:white;" href="{%url 'medicineList' %}"><br>Inventory</button>
 
   </div>
 
