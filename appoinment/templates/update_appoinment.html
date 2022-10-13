@@ -39,7 +39,7 @@
                 <!-- Credit Card -->
                 <div id="pay-invoice">
                     <div class="card-body">
-                        <form action="{% url 'update-appoinment-function' id=appoinment.id %}" method="post" novalidate="novalidate">
+                        <form action="{% url 'update-appoinment-function' id=appoinment.id %}" method="post">
                             {% csrf_token %}
                             <div class="form-group">
                                 <label for="Doctor_Name" class="control-label mb-1">Doctor Name</label>

@@ -12,7 +12,7 @@ from django.http.response import StreamingHttpResponse, HttpResponse
 from appoinment.models import Appoinment
 
 
-# Create your views here.
+# Create views here.
 def Home(request):
     return render(request,'home.html')
 
@@ -31,6 +31,7 @@ def Login(request):
 def Sign(request):
     return render(request,'sign.html')
 
+#add appoinment
 def add_appoinment(request):
     if request.method == 'POST':
        Doctor_Name = request.POST.get('Doctor_Name')
@@ -46,11 +47,20 @@ def add_appoinment(request):
     return render(request, 'add_appoinment.html')
   
     
-
+#appoinment
 def appoinment(request):
     appoinments =Appoinment.objects.all()
     appoinments_count = appoinments.count()
     
+    if request.method == 'GET':
+        search = request.GET.get('search')
+        
+        if(search):
+            appoinments = Appoinment.objects.filter(
+                Q(Doctor_Name__contains = search) | 
+                Q(id__contains = search)
+                
+            )
 
     return render(request, 'appoinment.html', {
         'appoinments': appoinments,'appoinments_count':appoinments_count
@@ -66,7 +76,7 @@ def dashboard(request):
         'appoinments': appoinments,'appoinments_count':appoinments_count
     })
 
-
+# Generate Reports
 def appoinment_report(request):
     appoinments = Appoinment.objects.all()
     
@@ -77,17 +87,19 @@ def appoinment_report(request):
     )
 
     writer = csv.writer(response)
-    writer.writerow(['Doctor Name', 'PATIENT NAME', 'Date', 'Time'])
+    writer.writerow(['ID','Doctor Name', 'PATIENT NAME', 'Date', 'Time'])
     for appoinment in appoinments:
-       writer.writerow([appoinment.Doctor_Name, appoinment.Patient_Name, appoinment.Date, appoinment.Time])
+       writer.writerow([appoinment.id,appoinment.Doctor_Name, appoinment.Patient_Name, appoinment.Date, appoinment.Time])
 
     return response
 
+#delete appoinment
 def delete_appoinment(request, id):
-    Appoinment.objects.filter(id=id).get().delete()
+    Appoinment.objects.filter(id=id).delete()
 
     return redirect('appoinment')
 
+#update_appoinment
 def update_appoinment_page(request, id):
     appoinment = Appoinment.objects.filter(id=id).get()
     
@@ -114,17 +126,7 @@ def update_appoinment(request, id):
 
     return redirect('appoinment')
     
-class appoinment_searchResultsView(ListView):
-    model = Appoinment
-    template_name = 'appoinment.html'
 
-    def get_context_data(self, **kwargs):
-        context = super().get_context_data(**kwargs)
-        query = self.request.GET.get('appoinment')
-        context['appoinment'] = Appoinment.objects.filter(
-            Q(id__icontains=query) | Q(Doctor_Name__icontains=query)
-        )
-        return context
 
 
     

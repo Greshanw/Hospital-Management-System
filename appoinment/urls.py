@@ -1,6 +1,6 @@
 from operator import add
 from django.urls import path
-from .views import About,Home,Contact,Loginsign,add_appoinment,update_appoinment_page,appoinment,dashboard,appoinment_report,delete_appoinment,Login,Sign,update_appoinment,appoinment_searchResultsView
+from .views import About,Home,Contact,Loginsign,add_appoinment,update_appoinment_page,appoinment,dashboard,appoinment_report,delete_appoinment,Login,Sign,update_appoinment
 
 
 
@@ -17,8 +17,8 @@ urlpatterns = [
     path('login/',Login, name='login'),
     path('sign/',Sign, name='sign'),
     path('update_appoinment/?<id>', update_appoinment_page, name='update_appoinment'),
-    path('updateAppoinment/?<id>',update_appoinment, name='update-appoinment-function'),
-    path('appoinment_search/', appoinment_searchResultsView.as_view(), name='appoinment_search')
+    path('updateAppoinment/?<id>',update_appoinment, name='update-appoinment-function')
+    
 ]
     
 
