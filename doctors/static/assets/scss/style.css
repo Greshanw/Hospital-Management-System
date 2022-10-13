@@ -2509,3 +2509,19 @@ footer.site-footer {
     left: inherit !important;
     right: 20px !important; }
 /*# sourceMappingURL=style.css.map */
+
+
+
+.form-inline{
+  display: -ms-flexbox;
+  display: flex;
+  -ms-flex-flow: row wrap;
+  flex-flow: row wrap;
+  -ms-flex-align: center;
+  align-items: center;
+}
+
+.icon-search{
+  color: #000;
+  font-size: 20px;
+}

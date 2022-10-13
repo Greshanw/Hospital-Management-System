@@ -1,0 +1,114 @@
+
+{% extends 'abase/abase.html' %}
+{% block title %}View Appoinment{% endblock title %}
+
+{% block breadcrumbs %}
+<div class="breadcrumbs">
+    <div class="breadcrumbs-inner">
+        <div class="row m-0">
+            <div class="col-sm-4">
+                <div class="page-header float-left">
+                    <div class="page-title">
+                        <h1>Dashboard</h1>
+                    </div>
+                </div>
+            </div>
+            <div class="col-sm-8">
+                <div class="page-header float-right">
+                    <div class="page-title">
+                        <ol class="breadcrumb text-right">
+                            <li><a style="color:gray; font-weight: bold;" href="{% url 'dashboard' %}">Dashboard</a></li>
+                            <li><a style="color:gray;font-weight: bold;" href="{% url 'appoinment' %}">Appoinment</a></li>
+                            <li class="active"><a style="color:gray; font-weight: bold;"href="{% url 'appoinment' %}">View Appoinment</a></li>
+                        </ol>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock breadcrumbs %}
+
+{% block content %}
+
+    <!-- Orders -->
+    <div class="orders">
+        <div class="row">
+            <div class="col-xl-12">
+                <div class="card">
+                    <div class="card-body">
+                        <div class="row d-flex ">
+                        <div class="w3-justify" >
+                            <div class="box-title"><h3>Appoinment List</h3></div></div>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                            <button style="background-color: #8bc34a; border: none;"><a href="{% url 'appoinment_report' %}" style="color: black;padding:15px; ">CSV</a></button>
+                           &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<form action="{% url 'appoinment' %}" method="get">
+                                <input style="padding:15px;margin:20px" name="search" class="form-control" type="text" placeholder="Search">
+                            </form> 
+                        </div>
+                    </div>
+                    <div class="card-body--">
+                        <div class="table-stats order-table ov-h">
+                            <table class="table ">
+                                <thead>
+                                    <tr>
+                                        <th style="color:black;  font-weight: bold;" class="serial">Appoinment ID</th>
+                                        <th style="color:black;  font-weight: bold;">Doctor Name</th>
+                                        <th style="color:black;  font-weight: bold;">Patient Name</th>
+                                        <th style="color:black;  font-weight: bold;">Date</th>
+                                        <th style="color:black;  font-weight: bold;">Time</th>
+                                        <th style="color:black;  font-weight: bold;">Action</th>
+                                        
+                                    </tr>
+                                </thead>
+                                    {% if appoinments %}
+                                    {% for a in appoinments %}
+                                    <tr>
+                                        <td class="serial">{{ forloop.counter }}</td>
+                                          <td>{{ a.Doctor_Name }}</td>
+                                        <td>{{ a.Patient_Name }}</td>
+                                        <td>{{ a.Date }}</td>
+                                        <td>{{ a.Time }}</td>
+                                        <td>
+                                        <a href="{% url 'update_appoinment' id=a.id %}"><i class="fa fa-pencil mx-2"></i></a>
+                                    
+										
+                                            <a type="button" data-toggle="modal" data-target="#exampleModal">
+                                                <i class="fa fa-trash mx-2"></i>
+                                            </a>
+                                             <div class="modal fade" id="exampleModal" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                                                <div class="modal-dialog" role="document">
+                                                  <div class="modal-content text-center">
+                                                    <div class="modal-header">
+                                                      <h5 class="modal-title" id="exampleModalLabel">Modal title</h5>
+                                                      <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                                        <span aria-hidden="true">&times;</span>
+                                                      </button>
+                                                    </div>
+                                                    <div class="modal-body">
+                                                        Are you sure you want to delete the appoinment
+                                                    </div>
+                                                    <div class="modal-footer">
+                                                      <a href="{% url 'delete_appoinment' id=a.id %}" type="button" class="btn btn-primary" style="color: white;">Delete</a>
+                                                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                                                      
+                                                    </div>
+                                                  </div>
+                                                </div>
+                                              </div>
+                                        </td>
+                                    </tr>
+                                    {% endfor %}
+                                    {% else %}
+                                        <tr><td>No Appoinment Data</td></tr>
+                                    {% endif %}
+                                </tbody>
+                            </table>
+                        </div> <!-- /.table-stats -->
+                    </div>
+                </div> <!-- /.card -->
+            </div>  <!-- /.col-lg-8 -->
+        </div>
+    </div> 
+    <!-- /.orders -->
+{% endblock content %}
+</div>

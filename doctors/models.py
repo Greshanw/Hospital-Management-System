@@ -21,10 +21,10 @@ class Patient(models.Model):
         return self.name
 
 class Doctor(models.Model):
-    name = models.CharField(max_length=120, unique=True)
+    name = models.CharField(max_length=120)
     speciality = models.CharField(max_length=120)
-    phone = models.CharField(max_length=120)
-    email = models.CharField(max_length=120)
+    phone = models.CharField(max_length=120,null=True)
+    email = models.CharField(max_length=120,null=True)
 
     def __str__(self):
         return self.name
