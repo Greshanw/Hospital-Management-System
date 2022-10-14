@@ -51,7 +51,7 @@ def dashboard(request):
     doctors = Doctor.objects.all()
     doctors_count = doctors.count()
 
-    return render(request, 'dashboard.html', {
+    return render(request, 'ddashboard.html', {
         'doctors': doctors,'doctors_count':doctors_count
     })
 

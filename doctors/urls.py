@@ -14,7 +14,7 @@ from .views import (
 
 urlpatterns = [
     
-    path('dashboard',dashboard,name='dashboard'),
+    path('doctordashboard',dashboard,name='doctordashboard'),
     path('add-doctor', add_doctor, name='add-doctor'),
     path('doctors', doctors, name='doctors'),
     path('update-doctor/?<id>',update_doctor_page, name='update-doctor'),
