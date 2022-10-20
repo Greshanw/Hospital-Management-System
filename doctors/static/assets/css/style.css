@@ -270,7 +270,6 @@ Googel Fonts  */
       content: "\f142";
       top: 24px;
       position: absolute;
-      font: normal normal normal 14px/1 FontAwesome;
       -webkit-font-smoothing: antialiased;
       -moz-osx-font-smoothing: grayscale;
       z-index: 99;
@@ -327,7 +326,6 @@ Googel Fonts  */
       z-index: 1; }
     .tdl-holder input[type="checkbox"]:checked + i::after {
       content: "\e64c";
-      font-family: 'themify';
       display: block;
       color: rgba(153, 171, 180, 0.5);
       left: 0;
@@ -596,7 +594,6 @@ aside.left-panel {
     color: #41434d;
     clear: both;
     display: block;
-    font-family: 'Open Sans';
     font-size: 14px;
     font-weight: 700;
     line-height: 50px;
@@ -710,7 +707,6 @@ aside.left-panel {
   background: #a9d86e;
   border-radius: 50%;
   color: #fff;
-  font-family: 'Open Sans';
   font-size: 9px;
   font-weight: 700;
   float: right;
@@ -1007,8 +1003,6 @@ header .form-inline {
     background: #fff;
     border: none;
     border-radius: 0;
-    -webkit-box-shadow: none;
-            box-shadow: none;
     top: 52px !important;
     left: inherit !important;
     right: 0 !important;
@@ -1131,7 +1125,6 @@ header .form-inline {
     background: #d9534f;
     border-radius: 50%;
     color: #fff;
-    font-family: 'Open Sans';
     font-size: 9px;
     font-weight: 700;
     float: right;
@@ -1437,12 +1430,9 @@ header .form-inline {
       border: none !important; }
   #flotPie1 .legendLabel {
     color: #868e96;
-    font-family: 'Open Sans';
     font-size: 12px; }
 
 /* Stats Table */
-.table-stats table {
-  font-family: 'Open Sans'; }
   .table-stats table th,
   .table-stats table td {
     border: none;
@@ -1470,7 +1460,6 @@ header .form-inline {
 
 /* Timeline */
 .timeline li {
-  font-family: 'Open Sans';
   list-style: none;
   padding: 5px 0;
   position: relative; }
@@ -1887,7 +1876,6 @@ header .form-inline {
 .morris-hover.morris-default-style {
   border-radius: 2px;
   padding: 10px 12px;
-  color: #666;
   background: rgba(0, 0, 0, 0.7);
   border: none;
   color: #fff !important; }
@@ -2093,7 +2081,6 @@ footer.site-footer {
   padding: 0 1.875em; }
   footer.site-footer .footer-inner {
     color: #78909c;
-    font-family: 'Open Sans';
     font-size: 14px;
     line-height: 1.5;
     padding: 2.45em 1.125em; }
@@ -2504,12 +2491,3 @@ footer.site-footer {
     right: 20px !important; }
 
 /*# sourceMappingURL=style.css.map */
-
-.icon-search{
-  color: #000;
-  font-size: 20px;
-}
-
-.footer-pad{
-  height: 50px;
-}
