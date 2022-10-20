@@ -34,7 +34,7 @@ def home(request):
         "queryset": queryset
     }
     # return the html page and the context
-    return render(request, "home.html", context)
+    return render(request, "Ihome.html", context)
 
 
 def list_item(request):
@@ -74,9 +74,9 @@ def generate_report(request):
     response['Content-Disposition'] = 'attachment; filename="List of Medicines.csv"'
     writer = csv.writer(response)
     writer.writerow([ 'Medicine NAME', 'QUANTITY',
-                        'Net PRICE', 'Vendor'])
+                        'Net PRICE', 'Vendor', 'Last Updated Date'])
     queryset = Inventory.objects.all().values_list('Medicine_name', 'quantity',
-                        'Net_price', 'Vendor')
+                        'Net_price', 'Vendor', 'last_updated')
     
     for stock in queryset:
         writer.writerow(stock)
