@@ -1,4 +1,4 @@
-from distutils.log import error
+from django.contrib.auth import logout
 from django.http import JsonResponse
 from django.http import HttpResponseRedirect, FileResponse
 import csv
@@ -14,6 +14,9 @@ from django.db.models import Q
 
 # Create your views here.
 def add_patient(request):
+    if not request.user.is_authenticated:
+        return redirect('login')
+
     if request.method == 'POST':
         name = request.POST.get('name')
         phone = request.POST.get('phone')
@@ -26,11 +29,13 @@ def add_patient(request):
         patient = Patient(name=name,phone=phone ,dob=dob ,NIC=nic ,email=email ,address=address, qr=qr)
         patient.save()
         return redirect('patients')
-        
 
     return render(request, 'add_patient.html')
 
 def patients(request):
+    if not request.user.is_authenticated:
+        return redirect('login')
+
     patients = Patient.objects.all()
 
     if request.method == 'GET':
@@ -76,6 +81,9 @@ def delete_patient(request, id):
     return redirect('patients')
 
 def edit_patient_page(request, id):
+    if not request.user.is_authenticated:
+        return redirect('login')
+
     patient = Patient.objects.filter(id=id).get()
     
     return render(request, 'edit_patient.html', {
@@ -119,7 +127,14 @@ obj = qr()
 
 # frameobj = Camera()
 
+def admin_logout(request):
+    logout(request)
+    return redirect('login')
+
 def qr_scan_page(request):
+    if not request.user.is_authenticated:
+        return redirect('login')
+
     patient = {
         "id": 0,
         "name": "",
@@ -150,7 +165,7 @@ def camera_feed(request):
 
     return StreamingHttpResponse(frame, content_type='multipart/x-mixed-replace; boundary=frame')
 
-def test(request):
+def getCode(request):
     code = obj.getqr()
     patient = {
         "id": 0,

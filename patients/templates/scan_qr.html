@@ -35,7 +35,7 @@
 <script>
     var id;
     function test(){
-        fetch('http://127.0.0.1:8000/test').then(response => response.json()).then(res => {
+        fetch('http://127.0.0.1:8000/getCode').then(response => response.json()).then(res => {
             id = res.patient.id;
             if(res.patient.id == 0){
                 document.getElementById("editBtn").disabled = true;

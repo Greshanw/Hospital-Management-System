@@ -11,7 +11,8 @@ from .views import (
     generate_qr,
     delete_patient,
     qr_scan_page,
-    test
+    getCode,
+    admin_logout
 )
 
 urlpatterns = [
@@ -24,5 +25,6 @@ urlpatterns = [
     path('editPatient/?<id>', edit_patient, name='edit-patient-function'),
     path('qr-scan', qr_scan_page, name='qr-scan'),
     path('camera_feed', camera_feed, name='camera_feed'),
-    path('test', test, name='test'),
+    path('getCode', getCode, name='getCode'),
+    path('logout', admin_logout, name='logout'),
 ]
