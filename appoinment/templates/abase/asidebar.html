@@ -1,5 +1,5 @@
 
-<aside style="margin-top: 50px;position:absolute;width: 280px;height:300px" >
+<aside style="margin-top: 50px;position:absolute;width: 280px;height:300px " >
     <nav class="navbar navbar-expand">
             <ul class="nav navbar-nav">
                 <li class="active">
@@ -13,8 +13,9 @@
                         <li><a href="{% url 'add_appoinment' %}"><em class="fa fa-user-plus"></em>&nbsp;&nbsp;Add Appoinment</a></li>
                         <li><a href="{% url 'appoinment' %}"><em class="fa fa-table"></em>&nbsp;&nbsp;View Appoinment</a></li>
                         </ul>
-                <div style="padding-top: 300px; padding-left: 30px;">
-                <a href="{% url 'loginsign' %}" type="button" class="btn btn-info btn-lg">LogOut</a>
+                        </li>
+                <div style="padding-left: 50px; position: fixed;margin-top: 440px;" class="text-center">
+                <a href="{% url 'logout' %}" type="button" class="btn btn-info btn-lg">LogOut</a>
                </div>
                   
                 </li>
