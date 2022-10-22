@@ -124,7 +124,7 @@ def update_appoinment(request, id):
     except:
         return redirect('appoinment')
 
-    return redirect('appoinment')
+    return redirect('appoinments')
     
 
 
