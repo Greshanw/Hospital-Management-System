@@ -14,8 +14,8 @@ from django.db.models import Q
 
 # Create your views here.
 def add_patient(request):
-    if not request.user.is_authenticated:
-        return redirect('login')
+    # if not request.user.is_authenticated:
+    #     return redirect('login')
 
     if request.method == 'POST':
         name = request.POST.get('name')
@@ -33,8 +33,8 @@ def add_patient(request):
     return render(request, 'add_patient.html')
 
 def patients(request):
-    if not request.user.is_authenticated:
-        return redirect('login')
+    # if not request.user.is_authenticated:
+    #     return redirect('login')
 
     patients = Patient.objects.all()
 
@@ -81,8 +81,8 @@ def delete_patient(request, id):
     return redirect('patients')
 
 def edit_patient_page(request, id):
-    if not request.user.is_authenticated:
-        return redirect('login')
+    # if not request.user.is_authenticated:
+    #     return redirect('login')
 
     patient = Patient.objects.filter(id=id).get()
     
@@ -132,8 +132,8 @@ def admin_logout(request):
     return redirect('login')
 
 def qr_scan_page(request):
-    if not request.user.is_authenticated:
-        return redirect('login')
+    # if not request.user.is_authenticated:
+    #     return redirect('login')
 
     patient = {
         "id": 0,
