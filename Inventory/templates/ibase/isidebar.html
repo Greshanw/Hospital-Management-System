@@ -4,7 +4,7 @@
         <div id="main-menu" class="main-menu collapse navbar-collapse">
             <ul class="nav navbar-nav">
                 <li class="active">
-                    <a class="navbar-brand"  style=" font-size: 22px;" href="/home"><i class="menu-icon fa fa-laptop"></i>Dashboard</a>
+                    <a class="navbar-brand"  style=" font-size: 22px;" href="/home"><em class="menu-icon fa fa-laptop"></em>Dashboard</a>
                 </li>
                 <li class="menu-title">Inventory Dashboard</li>
                 <li class="menu-item-has-children dropdown">
@@ -15,7 +15,8 @@
                     </ul>
                 </li>
                 <div style="padding-top: 400px; padding-left: 30px;">
-                <button  type="button" class="btn btn-info btn-lg">LogOut</button>
+                <!-- <button  type="button" class="btn btn-info btn-lg">LogOut</button> -->
+                <a href="{% url 'logout' %}" type="button" class="btn btn-info btn-lg">LogOut</a>
                 </div>
             </ul>
             
