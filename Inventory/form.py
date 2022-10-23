@@ -47,11 +47,27 @@ class InventoryCreateForm(forms.ModelForm):
 
         return quantity
     
+    def clean_Net_price(self):
+        Net_price = self.cleaned_data.get('Net_price')
+        if not Net_price:
+            raise forms.ValidationError(self.error)
+
+        
+        if Net_price <= 0:
+            raise forms.ValidationError(
+                 ' Net_price should be greater than 0')
+
+        return Net_price
+    
     def clean_receive_quantity(self):
         receive_quantity = self.cleaned_data.get('receive_quantity')
         if not receive_quantity:
             raise forms.ValidationError(self.error)
 
+        if receive_quantity <= 0:
+            raise forms.ValidationError(
+                 ' receive_quantity should be greater than 0')
+        
         return receive_quantity
     
     def clean_reorder_level(self):
